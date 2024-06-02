@@ -5,7 +5,9 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea
 {
     public class HomeModel : PageModel
     {
-        public string UserName { get; private set; }
+        private string userName = "user" ;
+
+        public string UserName { get => userName; private set => userName = value; }
 
         public void OnGet()
         {
