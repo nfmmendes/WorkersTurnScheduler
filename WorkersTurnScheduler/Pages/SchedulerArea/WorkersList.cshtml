@@ -1,0 +1,42 @@
+﻿@page
+@model WorkersTurnScheduler.Pages.SchedulerArea.WorkersListModel
+@{
+}
+
+
+<style> 
+    #worker-table table, #worker-table table tr  {
+          border: 1px solid black;
+          border-collapse: collapse;
+    }   
+    
+    #worker-table table td { 
+            padding: 4px 8px;
+    }
+
+</style>
+
+<div id="worker-table" class="col-md-8"> 
+    @if(Model.Workers != null && Model.Workers.Count () > 0){
+        <table> 
+            <thead>
+                <tr>
+                    <th>  @Html.DisplayNameFor(model => model.Workers[0].Id) </th>
+                    <th>  @Html.DisplayNameFor(model => model.Workers[0].Name) </th>
+                    <th>  @Html.DisplayNameFor(model => model.Workers[0].Surname) </th>
+                    <th>  @Html.DisplayNameFor(model => model.Workers[0].IsActive) </th>
+                </tr>
+            </thead>
+            @foreach (var elem in Model.Workers) {
+                var isActive = elem.IsActive ? "Yes" : "No"; 
+                <tr>
+                    <td> @Html.DisplayFor(modelItem => elem.Id)</td>
+                    <td> @Html.DisplayFor(modelItem => elem.Name) </td>
+                    <td> @Html.DisplayFor(modelItem => elem.Surname)</td>
+                    <td> @isActive </td>
+                </tr>
+            }
+        </table>
+    }
+
+</div>
