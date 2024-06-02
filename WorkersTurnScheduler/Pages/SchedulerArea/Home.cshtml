@@ -3,6 +3,24 @@
 @{
 }
 
-<div class="col-12"> 
+<style> 
+    #option-buttons-area div { 
+        display: inline-block;
+    }
+</style>
+
+<div class="row"> 
     <p> Buongiorno Sign. @Model.UserName</p>
+
+    <div id="option-buttons-area" class="cols-md-12">
+        <div class="cols-md-4"> 
+            <a href="WorkersList">  <button> Workers </button> </a> 
+        </div>
+        <div class="cols-md-4">
+            <a href="#"> <button> Last schedule </button> </a>
+        </div>
+        <div class="cols-md-4">
+            <a href="#"> <button> Some thing </button> </a>
+        </div>
+    </div>
 </div>
