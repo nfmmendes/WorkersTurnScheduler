@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkersTurnScheduler.Domain;
 using WorkersTurnScheduler.Services;
 
-namespace WorkersTurnScheduler.Pages.SchedulerArea
+namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers
 {
     public class WorkersListModel : PageModel
     {
@@ -16,7 +16,7 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea
             _repository = repository;
             Workers = new List<Worker>();
         }
-        
+
         public void OnGet()
         {
             Workers = _repository.GetAllWorkers();

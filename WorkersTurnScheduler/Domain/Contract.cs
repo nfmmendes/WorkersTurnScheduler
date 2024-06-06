@@ -11,7 +11,6 @@ namespace WorkersTurnScheduler.Domain
 
     public class Contract
     {
-  
         public UInt128 Id { get; private set; }
 
         public ContractType ContractType { get; private set; } = ContractType.Regular;
