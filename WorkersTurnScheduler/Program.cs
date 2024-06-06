@@ -1,3 +1,5 @@
+using WorkersTurnScheduler.Services;
+
 namespace WorkersTurnScheduler
 {
     public class Program
@@ -8,6 +10,7 @@ namespace WorkersTurnScheduler
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddScoped<IWorkerRepository, WorkerRepository>();
 
             var app = builder.Build();
 
