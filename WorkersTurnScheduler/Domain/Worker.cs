@@ -31,12 +31,14 @@ namespace WorkersTurnScheduler.Domain
             LastId= 0;
         }
 
-        public Worker(string name, string surname)
+        public Worker(string name, string surname, Contract? contract)
         {
             LastId += 1;
             Id = LastId;
             Name = name;
             Surname = surname;
+            IsActive = contract != null;
+            Contract = contract;
         }
     }
 }
