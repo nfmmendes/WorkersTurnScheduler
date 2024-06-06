@@ -25,6 +25,12 @@ namespace WorkersTurnScheduler.Domain
             LastId = 0;
         }
 
+        // TODO: Remove this when we introduce Entity Framework
+        public static void ResetId()
+        {
+            LastId= 0;
+        }
+
         public Worker(string name, string surname)
         {
             LastId += 1;
