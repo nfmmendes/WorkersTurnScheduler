@@ -42,6 +42,12 @@ namespace WorkersTurnScheduler.Domain
 
         public Contract(ContractType contractType, Tuple<int, int> weeklyHoursInterval, Tuple<int, int> weeklyDays, Tuple<int, int> dailyHours) { 
             ContractType = contractType;
+            MinWeeklyHours = weeklyHoursInterval.Item1;
+            MaxWeeklyHours = weeklyHoursInterval.Item2;
+            MinWeeklyDays = weeklyDays.Item1;
+            MaxWeeklyDays = weeklyDays.Item2;
+            MinDailyHours = dailyHours.Item1;
+            MaxDailyHours = dailyHours.Item2;
         }
     }
 }
