@@ -9,11 +9,11 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers
     {
         private IWorkerRepository _repository { get; set; } = workerRepository;
 
-        public Contract? _contract { get; private set; }
+        public Contract? Contract { get; private set; }
 
-        public String _workerName { get; private set; } = "";
+        public String WorkerName { get; private set; } = "";
 
-        public String _workerSurname { get; private set; } = "";
+        public String WorkerSurname { get; private set; } = "";
 
         public IActionResult OnGet(UInt128 workerId)
         {
@@ -24,11 +24,11 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers
                 return Error();
             }
 
-            _workerName = worker.Name;
-            _workerSurname = worker.Surname;
-            _contract = worker.Contract;
+            WorkerName = worker.Name;
+            WorkerSurname = worker.Surname;
+            Contract = worker.Contract;
 
-            if (_contract == null)
+            if (Contract == null)
             {
                 return Error();
             }
