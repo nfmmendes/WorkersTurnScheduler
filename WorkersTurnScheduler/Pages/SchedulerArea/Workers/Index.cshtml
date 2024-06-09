@@ -34,6 +34,7 @@
                     <td> @Html.DisplayFor(modelItem => elem.Name) </td>
                     <td> @Html.DisplayFor(modelItem => elem.Surname)</td>
                     <td> @isActive </td>
+                    <td> <a href=@($"./Workers/{elem.Id}/Contract/Index")> <button>Contract</button>  </a></td>
                 </tr>
             }
         </table>
