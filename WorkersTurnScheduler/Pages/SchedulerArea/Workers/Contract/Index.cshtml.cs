@@ -3,21 +3,29 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkersTurnScheduler.Domain;
 using WorkersTurnScheduler.Services;
 
-namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers
+
+namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
 {
     public class ContractModel(IWorkerRepository workerRepository) : PageModel
     {
         private IWorkerRepository _repository { get; set; } = workerRepository;
 
-        public Contract? Contract { get; private set; }
+        public Domain.Contract? Contract { get; private set; }
 
-        public String WorkerName { get; private set; } = "";
+        public string WorkerName { get; private set; } = "";
 
-        public String WorkerSurname { get; private set; } = "";
+        public string WorkerSurname { get; private set; } = "";
 
-        public IActionResult OnGet(UInt128 workerId)
+        [BindProperty]
+        public UInt128 WorkerId { get; set; }
+
+        public IActionResult OnGet()
         {
-            var worker = _repository.GetWorker(workerId);
+            HttpContext.Request.RouteValues.TryGetValue("workerId", out object workerIdObject);
+
+            WorkerId = System.Convert.ToUInt64(workerIdObject);
+
+            var worker = _repository.GetWorker(WorkerId);
 
             if (worker == null)
             {
