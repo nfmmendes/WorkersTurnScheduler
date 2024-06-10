@@ -16,7 +16,7 @@ namespace WorkersTurnScheduler.Domain
 
         public bool IsActive { get; private set; }
 
-        public Contract Contract { get; private set; }
+        public Contract? Contract { get; private set; }
 
         private static UInt128 LastId { get; set; }
 
