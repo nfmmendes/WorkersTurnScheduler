@@ -39,8 +39,22 @@ namespace WorkersTurnScheduler.Domain
         [Range (minimum:0, maximum: 24, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MinDailyHours { get; set; } = 1;
 
+        private static UInt128 LastId { get; set; }
 
-        public Contract(ContractType contractType, Tuple<int, int> weeklyHoursInterval, Tuple<int, int> weeklyDays, Tuple<int, int> dailyHours) { 
+        static Contract()
+        {
+            LastId = 0;
+        }
+        public static void ResetId()
+        {
+            LastId = 0;
+        }
+
+        public Contract(ContractType contractType, Tuple<int, int> weeklyHoursInterval, Tuple<int, int> weeklyDays, Tuple<int, int> dailyHours) {
+
+            LastId++;
+            Id = LastId;
+
             ContractType = contractType;
             MinWeeklyHours = weeklyHoursInterval.Item1;
             MaxWeeklyHours = weeklyHoursInterval.Item2;
