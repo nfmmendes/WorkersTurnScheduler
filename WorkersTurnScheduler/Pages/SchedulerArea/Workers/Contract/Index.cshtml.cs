@@ -21,7 +21,6 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
 
         public IActionResult OnGet()
         {
-            object worketIdObject;
             HttpContext.Request.RouteValues.TryGetValue("workerId", out object workerIdObject);
 
             WorkerId = System.Convert.ToUInt64(workerIdObject);
