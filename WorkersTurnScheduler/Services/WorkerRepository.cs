@@ -10,6 +10,7 @@ namespace WorkersTurnScheduler.Services
             get
             {
                 Worker.ResetId();
+                Contract.ResetId();
                 return new List<Worker>{
                                                     new Worker("Paulo", "Pessoa", new Contract(ContractType.Regular, new Tuple<int, int>(20, 40), new Tuple<int, int>(3, 5), new Tuple<int, int>(3, 8) )),
                                                     new Worker("Carlos", "Silva", new Contract(ContractType.Regular, new Tuple<int, int>(30, 40), new Tuple<int, int>(4, 5), new Tuple<int, int>(6, 8) )),
