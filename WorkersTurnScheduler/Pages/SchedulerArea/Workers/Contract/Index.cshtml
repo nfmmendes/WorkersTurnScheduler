@@ -34,4 +34,9 @@
         <div class="col-md-5"> <p><b> Minimum: </b> @Model.Contract?.MinDailyHours </p></div>
         <div class="col-md-5"> <p><b> Maximum: </b> @Model.Contract?.MaxDailyHours </p></div>
     </div>
+    @if(Model.Contract != null){
+        <div class="row mt-1">
+            <a href=@($"./Edit/{Model.Contract.Id}")> <button> Edit </button> </a>
+        </div>
+    }
 </div>
