@@ -27,6 +27,7 @@ namespace WorkersTurnScheduler
             });
 
             builder.Services.AddScoped<IWorkerRepository, WorkerRepository>();
+            builder.Services.AddScoped<IContractRepository, ContractRepository>();
 
             var app = builder.Build();
 
