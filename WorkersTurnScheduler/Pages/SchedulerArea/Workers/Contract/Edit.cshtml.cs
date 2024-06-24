@@ -46,7 +46,7 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
             EditContract = _contractRepository.getContract(ContractId);
 
             if (EditContract == null) {
-                return RedirectToPage($"./Worker/{System.Convert.ToUInt64(workerIdObject)}/Category/Index");
+                return RedirectToPage($"./Worker/{System.Convert.ToUInt64(workerIdObject)}/Contract/Index");
             }
 
             return Page();
