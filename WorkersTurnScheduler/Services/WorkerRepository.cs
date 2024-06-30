@@ -3,8 +3,15 @@ using WorkersTurnScheduler.Domain;
 
 namespace WorkersTurnScheduler.Services
 {
+    /// <summary>
+    /// Class <c>WorkerRepository</c> contains the functions needed
+    /// to access workers data. 
+    /// </summary>
     public class WorkerRepository : IWorkerRepository
     {
+        /// <value>
+        /// The list of workers. 
+        /// </value>
         private static List<Worker> Workers 
         {
             get
@@ -19,11 +26,20 @@ namespace WorkersTurnScheduler.Services
             }
         }
 
+        /// <summary>
+        /// Get the worker list.
+        /// </summary>
+        /// <returns>The list of workers.</returns>
         public List<Worker> GetAllWorkers()
         {
             return Workers;
         }
 
+        /// <summary>
+        /// Get the worker with the respective id. 
+        /// </summary>
+        /// <param name="id">The worker id.</param>
+        /// <returns>A worker, if it is found. Null otherwise.</returns>
         public Worker? GetWorker(UInt128 id)
         {
             return Workers.FirstOrDefault(x=> x.Id == id);
