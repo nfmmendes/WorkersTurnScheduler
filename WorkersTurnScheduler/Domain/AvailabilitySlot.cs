@@ -39,6 +39,9 @@ namespace WorkersTurnScheduler.Domain
         [Required]
         public TimeOnly End { get; set; }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         private AvailabilitySlot() { }
     }
 }
