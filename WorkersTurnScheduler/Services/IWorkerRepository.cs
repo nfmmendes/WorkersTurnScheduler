@@ -18,6 +18,6 @@ namespace WorkersTurnScheduler.Services
         /// </summary>
         /// <param name="id">The worker id.</param>
         /// <returns>A worker. </returns>
-        Worker GetWorker(UInt128 id);
+        Worker? GetWorker(UInt128 id);
     }
 }
