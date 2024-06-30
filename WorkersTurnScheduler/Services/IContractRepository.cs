@@ -3,7 +3,7 @@
 namespace WorkersTurnScheduler.Services
 {
     /// <summary>
-    /// ContractRepository inteface
+    /// ContractRepository inteface.
     /// </summary>
     public interface IContractRepository
     {

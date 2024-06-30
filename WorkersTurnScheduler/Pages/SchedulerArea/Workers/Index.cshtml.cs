@@ -17,14 +17,14 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers
         public List<Worker> Workers { get; private set; }
 
         /// <value>
-        /// Worker repository
+        /// Worker repository.
         /// </value>
         public IWorkerRepository _repository { get; private set; }
 
         /// <summary>
         /// Constructor. 
         /// </summary>
-        /// <param name="repository">Worker repository passed as injected dependency</param>
+        /// <param name="repository">Worker repository passed as injected dependency.</param>
         public WorkersListModel(IWorkerRepository repository)
         {
             _repository = repository;
