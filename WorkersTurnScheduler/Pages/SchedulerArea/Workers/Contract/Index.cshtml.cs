@@ -10,7 +10,7 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
     /// Class <c>ContractModel</c> is a page model class that contains data and methods 
     /// needed to manage and render contract index page. 
     /// </summary>
-    /// <param name="workerRepository">Worker repository passed as injected depedency </param>
+    /// <param name="workerRepository">Worker repository passed as injected depedency. </param>
     public class ContractModel(IWorkerRepository workerRepository) : PageModel
     {
         /// <value>

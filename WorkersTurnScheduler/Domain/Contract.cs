@@ -23,7 +23,7 @@ namespace WorkersTurnScheduler.Domain
         public UInt128 Id { get; private set; }
 
         /// <value>
-        /// The contract type
+        /// The contract type.
         /// </value>
         public ContractType ContractType { get; private set; } = ContractType.Regular;
 
@@ -72,7 +72,7 @@ namespace WorkersTurnScheduler.Domain
         private static UInt128 LastId { get; set; }
 
         /// <summary>
-        /// Static constructor. Temporary function
+        /// Static constructor. Temporary function.
         /// </summary>
         static Contract()
         {
