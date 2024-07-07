@@ -1,4 +1,5 @@
 ﻿using WorkersTurnScheduler.Domain;
+using WorkersTurnScheduler.Model;
 
 namespace WorkersTurnScheduler.Services
 {
