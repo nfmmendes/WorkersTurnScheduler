@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.AspNetCore.Routing;
-using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 using WorkersTurnScheduler.Services;
+using WorkersTurnScheduler.Model;
 
 namespace WorkersTurnScheduler
 {
@@ -25,6 +24,8 @@ namespace WorkersTurnScheduler
                     options.Conventions.AddPageRoute($"{basePath}/{action}", route);
                 }
             });
+
+            builder.Services.AddDbContext<SchedulerContext>(options => options.UseInMemoryDatabase("scheduler"));
 
             builder.Services.AddScoped<IWorkerRepository, WorkerRepository>();
             builder.Services.AddScoped<IContractRepository, ContractRepository>();
