@@ -43,7 +43,6 @@ namespace WorkersTurnScheduler.Domain
         /// <param name="contract"> The worker contract. </param>
         public Worker(string name, string surname, Contract? contract)
         {
-            Id = Guid.NewGuid();
             Name = name;
             Surname = surname;
             IsActive = contract != null;

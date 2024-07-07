@@ -78,8 +78,6 @@ namespace WorkersTurnScheduler.Domain
         /// <param name="weeklyDays"> The minimum and maximum number of working days in a week. </param>
         /// <param name="dailyHours"> The minimum and maximum number of working hours in a day. </param>
         public Contract(ContractType contractType, Tuple<int, int> weeklyHoursInterval, Tuple<int, int> weeklyDays, Tuple<int, int> dailyHours) {
-            
-            Id = Guid.NewGuid();
             ContractType = contractType;
             MinWeeklyHours = weeklyHoursInterval.Item1;
             MaxWeeklyHours = weeklyHoursInterval.Item2;

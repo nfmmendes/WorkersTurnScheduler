@@ -49,7 +49,6 @@ namespace WorkersTurnScheduler.Domain
         /// Constructor.
         /// </summary>
         private AvailabilitySlot() { 
-            Id = Guid.NewGuid();
         }
     }
 }
