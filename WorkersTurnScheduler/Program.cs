@@ -15,13 +15,13 @@ namespace WorkersTurnScheduler
             builder.Services.AddRazorPages().AddRazorPagesOptions(options => {
                 String[] actions = ["Index", "Edit"];
                 var basePath = "/SchedulerArea/Workers/Contract";
-                var pathTemplate = "SchedulerArea/Workers/{workerId:int}/Contract";
+                var pathTemplate = "SchedulerArea/Workers/{workerId:guid}/Contract";
                 foreach (var action in actions)
                 {
                     var route = $"{pathTemplate}/{action}";
 
                     if (action != "Index")
-                        route += "/{contractId:int}";
+                        route += "/{contractId:guid}";
                     options.Conventions.AddPageRoute($"{basePath}/{action}", route);
                 }
             });
