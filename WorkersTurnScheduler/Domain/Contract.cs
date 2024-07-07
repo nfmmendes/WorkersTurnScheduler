@@ -86,5 +86,10 @@ namespace WorkersTurnScheduler.Domain
             MinDailyHours = dailyHours.Item1;
             MaxDailyHours = dailyHours.Item2;
         }
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public Contract() { }
     }
 }

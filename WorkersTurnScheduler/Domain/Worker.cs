@@ -48,5 +48,10 @@ namespace WorkersTurnScheduler.Domain
             IsActive = contract != null;
             Contract = contract;
         }
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public Worker() { }
     }
 }
