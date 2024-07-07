@@ -12,6 +12,6 @@ namespace WorkersTurnScheduler.Services
         /// </summary>
         /// <param name="contractId">The contract id. </param>
         /// <returns> Return a contract, if the contract exists, null otherwise.</returns>
-        public Contract? getContract(UInt128 contractId);
+        public Contract? getContract(Guid contractId);
     }
 }

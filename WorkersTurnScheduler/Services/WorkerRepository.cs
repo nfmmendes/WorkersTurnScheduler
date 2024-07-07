@@ -16,8 +16,6 @@ namespace WorkersTurnScheduler.Services
         {
             get
             {
-                Worker.ResetId();
-                Contract.ResetId();
                 return new List<Worker>{
                     new Worker("Paulo", "Pessoa", new Contract(ContractType.Regular, new Tuple<int, int>(20, 40), new Tuple<int, int>(3, 5), new Tuple<int, int>(3, 8) )),
                     new Worker("Carlos", "Silva", new Contract(ContractType.Regular, new Tuple<int, int>(30, 40), new Tuple<int, int>(4, 5), new Tuple<int, int>(6, 8) )),
@@ -40,7 +38,7 @@ namespace WorkersTurnScheduler.Services
         /// </summary>
         /// <param name="id">The worker id.</param>
         /// <returns>A worker, if it is found. Null otherwise.</returns>
-        public Worker? GetWorker(UInt128 id)
+        public Worker? GetWorker(Guid id)
         {
             return Workers.FirstOrDefault(x=> x.Id == id);
         }

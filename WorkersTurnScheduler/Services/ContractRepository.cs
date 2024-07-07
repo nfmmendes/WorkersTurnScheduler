@@ -26,7 +26,7 @@ namespace WorkersTurnScheduler.Services
        /// </summary>
        /// <param name="contractId">The contract id. </param>
        /// <returns> Return a contract, if the contract exists, null otherwise.</returns>
-        public Contract? getContract(UInt128 contractId)
+        public Contract? getContract(Guid contractId)
         {
             // TODO: Search it directly on Contract list when it will be available.
             var worker = _workerRepository.GetAllWorkers().FirstOrDefault(worker => worker.Contract.Id == contractId);

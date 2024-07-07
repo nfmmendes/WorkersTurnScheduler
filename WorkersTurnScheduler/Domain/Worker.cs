@@ -9,7 +9,7 @@ namespace WorkersTurnScheduler.Domain
     public class Worker
     {
         [Required, Key]
-        public UInt128 Id { get; private set; }
+        public Guid Id { get; private set; }
 
         /// <value>
         /// Worker name. 
@@ -36,21 +36,6 @@ namespace WorkersTurnScheduler.Domain
         private static UInt128 LastId { get; set; }
 
         /// <summary>
-        /// Static constructor. 
-        /// OBS: To be removed soon. 
-        /// </summary>
-        static Worker()
-        {
-            LastId = 0;
-        }
-
-        // TODO: Remove this when we introduce Entity Framework
-        public static void ResetId()
-        {
-            LastId= 0;
-        }
-
-        /// <summary>
         /// Class constructor
         /// </summary>
         /// <param name="name"> The worker name. </param>
@@ -58,8 +43,7 @@ namespace WorkersTurnScheduler.Domain
         /// <param name="contract"> The worker contract. </param>
         public Worker(string name, string surname, Contract? contract)
         {
-            LastId += 1;
-            Id = LastId;
+            Id = Guid.NewGuid();
             Name = name;
             Surname = surname;
             IsActive = contract != null;

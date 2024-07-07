@@ -20,7 +20,8 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// The contract id.
         /// </value>
-        public UInt128 Id { get; private set; }
+        [Required, Key]
+        public Guid Id { get; private set; }
 
         /// <value>
         /// The contract type.
@@ -69,26 +70,6 @@ namespace WorkersTurnScheduler.Domain
         [Range (minimum:0, maximum: 24, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MinDailyHours { get; set; } = 1;
 
-        private static UInt128 LastId { get; set; }
-
-        /// <summary>
-        /// Static constructor. Temporary function.
-        /// </summary>
-        static Contract()
-        {
-            // TODO: Remove this function after connect the repository to database. 
-            LastId = 0;
-        }
-        
-        /// <summary>
-        /// Reset the id. It is used to let the Id count coherent. 
-        /// </summary>
-        public static void ResetId()
-        {
-            // TODO: Remove this function after connect the repository to database. 
-            LastId = 0;
-        }
-
         /// <summary>
         /// Class constructor
         /// </summary>
@@ -97,10 +78,8 @@ namespace WorkersTurnScheduler.Domain
         /// <param name="weeklyDays"> The minimum and maximum number of working days in a week. </param>
         /// <param name="dailyHours"> The minimum and maximum number of working hours in a day. </param>
         public Contract(ContractType contractType, Tuple<int, int> weeklyHoursInterval, Tuple<int, int> weeklyDays, Tuple<int, int> dailyHours) {
-
-            LastId++;
-            Id = LastId;
-
+            
+            Id = Guid.NewGuid();
             ContractType = contractType;
             MinWeeklyHours = weeklyHoursInterval.Item1;
             MaxWeeklyHours = weeklyHoursInterval.Item2;

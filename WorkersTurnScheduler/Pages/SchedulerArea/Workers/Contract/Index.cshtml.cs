@@ -37,7 +37,7 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
         /// Worker id.
         /// </value>
         [BindProperty]
-        public UInt128 WorkerId { get; set; }
+        public Guid WorkerId { get; set; }
 
         /// <summary>
         /// The page GET function. 
@@ -47,7 +47,7 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
         {
             HttpContext.Request.RouteValues.TryGetValue("workerId", out object workerIdObject);
 
-            WorkerId = System.Convert.ToUInt64(workerIdObject);
+            WorkerId = new Guid(workerIdObject.ToString());
 
             var worker = _repository.GetWorker(WorkerId);
 

@@ -9,6 +9,12 @@ namespace WorkersTurnScheduler.Domain
     public class AvailabilitySlot
     {
         /// <value>
+        /// The availabilitySlot id.
+        /// </value>
+        [Required, Key]
+        public Guid Id { get; private set; }
+
+        /// <value>
         /// The week days in which the worker is available. 
         /// </value>
         [Required]
@@ -42,6 +48,8 @@ namespace WorkersTurnScheduler.Domain
         /// <summary>
         /// Constructor.
         /// </summary>
-        private AvailabilitySlot() { }
+        private AvailabilitySlot() { 
+            Id = Guid.NewGuid();
+        }
     }
 }

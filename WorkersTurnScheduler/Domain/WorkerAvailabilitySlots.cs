@@ -9,10 +9,16 @@ namespace WorkersTurnScheduler.Domain
     public class WorkerAvailabilitySlots
     {
         /// <value>
-        /// Worker id.
+        /// The WorkerAvailabilitySlots id. 
+        /// </value>
+        [Required, Key]
+        public Guid Id { get; private set; }
+
+        /// <value>
+        /// The worker.
         /// </value>
         [Key]
-        public UInt128 WorkerId { get; private set; } 
+        public Worker Worker { get; private set; } 
 
         /// <summary>
         /// The list of availability slots to the given worker. 
@@ -22,6 +28,8 @@ namespace WorkersTurnScheduler.Domain
         /// <summary>
         /// Constructor.
         /// </summary>
-        private WorkerAvailabilitySlots() { }
+        private WorkerAvailabilitySlots() { 
+            Id = Guid.NewGuid();
+        }
     }
 }

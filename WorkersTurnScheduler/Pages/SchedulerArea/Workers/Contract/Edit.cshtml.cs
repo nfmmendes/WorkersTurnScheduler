@@ -1,6 +1,7 @@
+using System.Runtime;
+using WorkersTurnScheduler.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using WorkersTurnScheduler.Domain;
 using WorkersTurnScheduler.Services;
 
 namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
@@ -16,7 +17,7 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
         /// </value>
         IContractRepository _contractRepository;
         
-        public UInt128 ContractId { get; set; }
+        public Guid ContractId { get; set; }
 
         /// <value>
         /// DTO holding the current/new contract data.
@@ -40,7 +41,8 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
             HttpContext.Request.RouteValues.TryGetValue("contractId", out object contractIdObject);
             HttpContext.Request.RouteValues.TryGetValue("workerId", out object workerIdObject);
 
-            ContractId = System.Convert.ToUInt64(contractIdObject);
+            if(contractIdObject != null)
+                ContractId = new Guid(contractIdObject.ToString());
 
             Console.WriteLine(ContractId);
             EditContract = _contractRepository.getContract(ContractId);
