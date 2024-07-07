@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WorkersTurnScheduler.Domain;
+using WorkersTurnScheduler.Model;
 
 namespace WorkersTurnScheduler.Services
 {
@@ -9,19 +11,24 @@ namespace WorkersTurnScheduler.Services
     /// </summary>
     public class WorkerRepository : IWorkerRepository
     {
-        /// <value>
-        /// The list of workers. 
-        /// </value>
-        private static List<Worker> Workers 
+        private SchedulerContext _context;
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="context">The scheduler context</param>
+        public WorkerRepository(SchedulerContext context)
         {
-            get
+           _context = context;
+            if (_context.Workers.Count() == 0)
             {
-                return new List<Worker>{
+                _context.Workers.AddRange(new List<Worker>{
                     new Worker("Paulo", "Pessoa", new Contract(ContractType.Regular, new Tuple<int, int>(20, 40), new Tuple<int, int>(3, 5), new Tuple<int, int>(3, 8) )),
                     new Worker("Carlos", "Silva", new Contract(ContractType.Regular, new Tuple<int, int>(30, 40), new Tuple<int, int>(4, 5), new Tuple<int, int>(6, 8) )),
                     new Worker("Alan", "Carvalho",new Contract(ContractType.Freelance, new Tuple<int, int>(20, 40), new Tuple<int, int>(1, 3), new Tuple<int, int>(4, 6) ) ),
-                    new Worker("Rodrigo", "Ribeiro", new Contract(ContractType.Temporary, new Tuple<int, int>(40, 40), new Tuple<int, int>(5, 5), new Tuple<int, int>(8, 8) )) };
+                    new Worker("Rodrigo", "Ribeiro", new Contract(ContractType.Temporary, new Tuple<int, int>(40, 40), new Tuple<int, int>(5, 5), new Tuple<int, int>(8, 8) )) });
             }
+            _context.SaveChanges();
         }
 
         /// <summary>
@@ -30,7 +37,7 @@ namespace WorkersTurnScheduler.Services
         /// <returns>The list of workers.</returns>
         public List<Worker> GetAllWorkers()
         {
-            return Workers;
+            return _context.Workers.ToList();
         }
 
         /// <summary>
@@ -40,7 +47,7 @@ namespace WorkersTurnScheduler.Services
         /// <returns>A worker, if it is found. Null otherwise.</returns>
         public Worker? GetWorker(Guid id)
         {
-            return Workers.FirstOrDefault(x=> x.Id == id);
+            return _context.Workers.Include(x => x.Contract).FirstOrDefault(x=> x.Id == id);
         }
     }
 }
