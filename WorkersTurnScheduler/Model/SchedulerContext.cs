@@ -22,7 +22,7 @@ namespace WorkersTurnScheduler.Model
         /// <value>
         /// The set of worker availability slots.
         /// </value>
-        public DbSet<WorkerAvailabilitySlots> WorkerAvailabilitySlots { get; set; }
+        public DbSet<WorkerAvailability> WorkerAvailabilitySlots { get; set; }
 
         /// <value>
         /// The set of availability slots.

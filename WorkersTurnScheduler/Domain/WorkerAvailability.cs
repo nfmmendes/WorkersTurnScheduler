@@ -3,10 +3,10 @@
 namespace WorkersTurnScheduler.Domain
 {
     /// <summary>
-    /// Class <c>WorkerAvailabilitySlots</c> contains the data to represent
+    /// Class <c>WorkerAvailability</c> contains the data to represent
     /// the connection between workers and their availability slots. 
     /// </summary>
-    public class WorkerAvailabilitySlots
+    public class WorkerAvailability
     {
         /// <value>
         /// The WorkerAvailabilitySlots id. 
@@ -28,8 +28,7 @@ namespace WorkersTurnScheduler.Domain
         /// <summary>
         /// Constructor.
         /// </summary>
-        private WorkerAvailabilitySlots() { 
-            Id = Guid.NewGuid();
+        private WorkerAvailability() { 
         }
     }
 }
