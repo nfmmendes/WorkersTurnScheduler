@@ -1,31 +1,35 @@
 ﻿@page 
 @model EditModel
-@{
-    var ContractData = Model.EditContract;
-}
-<div class="container">
-    <div class="row mt-1">
-        <h5> Contract type: </h5>
-        <div class="col-md-5"> <p> @ContractData.ContractType </p></div>
-    </div>
+@using WorkersTurnScheduler.Domain
 
+<div class="container">
     <form>
     <div class="row mt-1">
+        <label> Contract type: </label>
+        <div class="col-5">
+            <select asp-for="EditContract.ContractType" class="form-control"
+                asp-items="Html.GetEnumSelectList<ContractType>()">
+            <option value="">-- Select Department --</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="row mt-1">
         <h5> Weekly hours contracted: </h5>
-            <div class="col-md-5"> <p><b> Minimum: </b> @ContractData.MinWeeklyHours </p></div>
-            <div class="col-md-5"> <p><b> Maximum: </b> @ContractData.MaxWeeklyHours </p></div>
+            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinWeeklyHours" />  </p></div>
+            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxWeeklyHours" /> </p></div>
     </div>
 
     <div class="row mt-1">
         <h5> Weekly days contracted: </h5>
-            <div class="col-md-5"> <p><b> Minimum: </b> @ContractData.MinWeeklyDays </p></div>
-            <div class="col-md-5"> <p><b> Maximum: </b> @ContractData.MaxWeeklyDays </p></div>
+            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinWeeklyDays" /> </p></div>
+            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxWeeklyDays" /> </p></div>
     </div>
 
     <div class="row mt-1">
         <h5> Working day shift duration: </h5>
-            <div class="col-md-5"> <p><b> Minimum: </b> @ContractData.MinDailyHours </p></div>
-            <div class="col-md-5"> <p><b> Maximum: </b> @ContractData.MaxDailyHours </p></div>
+            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinDailyHours" /> </p></div>
+            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxDailyHours" /> </p></div>
     </div>
         <div class="row mt-2">
             <a href="#"> <button> Save </button> </a>
