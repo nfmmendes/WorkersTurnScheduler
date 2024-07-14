@@ -15,7 +15,7 @@
             <label> @Model.Worker.Surname </label>
         </div>
         <div class="row"> 
-            <button class="btn-primary">Contract</button>
+            <a href=@($"./{@Model.Worker.Id}/Contract/Index")><button class="btn-primary">Contract</button></a>
             <button class="btn-primary"> Availability </button>
             <button class="btn-secondary"> Back</button>
         </div>
