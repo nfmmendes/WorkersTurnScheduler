@@ -31,5 +31,26 @@ namespace WorkersTurnScheduler.Services
         {
             return _context.Contracts.FirstOrDefault(x => x.Id == contractId);
         }
+
+        /// <summary>
+        /// Update a contract.
+        /// </summary>
+        /// <param name="id"> The contract id</param>
+        /// <param name="contract"> The object with the new contract data.</param>
+        public void updateContract(Guid id, Contract contract) {
+            var newContract = getContract(id);
+            if (newContract == null)
+                return;
+
+            newContract.MinWeeklyHours = contract.MinWeeklyHours;
+            newContract.MaxWeeklyHours = contract.MaxWeeklyHours;
+            newContract.MinDailyHours = contract.MinDailyHours;
+            newContract.MaxDailyHours = contract.MaxDailyHours;
+            newContract.MinWeeklyDays = contract.MinWeeklyDays;
+            newContract.MaxWeeklyDays = contract.MaxWeeklyDays;
+
+            _context.Contracts.Update(newContract);
+            _context.SaveChanges();
+        }
     }
 }
