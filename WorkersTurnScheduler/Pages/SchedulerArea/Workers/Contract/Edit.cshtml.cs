@@ -3,6 +3,7 @@ using WorkersTurnScheduler.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkersTurnScheduler.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
 {
@@ -22,6 +23,7 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
         /// <value>
         /// DTO holding the current/new contract data.
         /// </value>
+        [BindProperty]
         public Domain.Contract? EditContract { get; set; }
 
         /// <summary>
@@ -49,6 +51,20 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
 
             if (EditContract == null) {
                 return RedirectToPage($"./Worker/{System.Convert.ToUInt64(workerIdObject)}/Contract/Index");
+            }
+
+            return Page();
+        }
+
+        public IActionResult OnPostAsync(Guid id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            
+            if (EditContract != null) {
+                _contractRepository.updateContract(id, EditContract);
             }
 
             return Page();
