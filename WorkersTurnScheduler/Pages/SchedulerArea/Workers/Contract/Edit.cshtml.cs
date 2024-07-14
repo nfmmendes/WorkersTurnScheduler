@@ -46,11 +46,10 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
             if(contractIdObject != null)
                 ContractId = new Guid(contractIdObject.ToString());
 
-            Console.WriteLine(ContractId);
             EditContract = _contractRepository.getContract(ContractId);
 
             if (EditContract == null) {
-                return RedirectToPage($"./Worker/{System.Convert.ToUInt64(workerIdObject)}/Contract/Index");
+                return RedirectToPage($"../Contract/Index");
             }
 
             return Page();
@@ -65,6 +64,7 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
             
             if (EditContract != null) {
                 _contractRepository.updateContract(id, EditContract);
+                return Redirect($"../Index");
             }
 
             return Page();
