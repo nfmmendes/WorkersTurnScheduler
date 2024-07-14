@@ -5,21 +5,34 @@
 
 
 <div class=".container">
-    <div class="row" > 
-        <div class="col-4"> 
+    <h2>Worker info</h2>
+    <div class="row mb-3 mt-5" > 
+        <h3>Personal data</h3>
+        <div class="col-4">      
             <label> Name: </label>
             <label> @Model.Worker.Name </label>
         </div>
         <div class="col-4">
-            <label> Name: </label>
+            <label> Surname: </label>
             <label> @Model.Worker.Surname </label>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <a class="btn btn-primary" href="./{@Model.Worker.Id}/Contract/Index">Contract</a>
-                <button type="button" class="btn btn-primary"> Availability </button>
-                <button type="button" class="btn btn-secondary"> Back</button>
-            </div>
+    </div>
+    <div class="row mb-3">
+        <h3>Professional details</h3>
+        <div class="col-4">
+            <label>Is active?</label>
+            <label> @Model.Worker.IsActive </label>
+        </div>
+        <div class="col-4">
+            <label>Contract type: </label>
+            <label> @Model.Worker.Contract?.ContractType </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a class="btn btn-primary" href="./{@Model.Worker.Id}/Contract/Index">Contract</a>
+            <button type="button" class="btn btn-primary"> Availability </button>
+            <button type="button" class="btn btn-secondary"> Back</button>
         </div>
     </div>
 </div>
