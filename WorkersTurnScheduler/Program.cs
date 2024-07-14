@@ -13,7 +13,7 @@ namespace WorkersTurnScheduler
             // Add services to the container.
             builder.Services.AddRazorPages().AddRazorPagesOptions(options => {
                 String[] actions = ["Index", "Edit"];
-                var basePath = "/SchedulerArea/Worker/Contract";
+                var basePath = "/SchedulerArea/Contract";
                 var pathTemplate = "SchedulerArea/Worker/{workerId:guid}/Contract";
                 foreach (var action in actions)
                 {

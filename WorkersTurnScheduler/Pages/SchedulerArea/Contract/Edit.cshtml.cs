@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkersTurnScheduler.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker.Contract
+namespace WorkersTurnScheduler.Pages.SchedulerArea.Contract
 {
     /// <summary>
     /// Class <c>EditModel</c> is a page model that contains the data functions needed to 
