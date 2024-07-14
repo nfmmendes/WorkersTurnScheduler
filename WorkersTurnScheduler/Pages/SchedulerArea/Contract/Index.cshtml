@@ -4,33 +4,33 @@
 }
 
 <div class="container" > 
-     <div class="row mt-1"> 
-        <h3> Worker contract </h3>
-        <h5> Worker </h5>
+     <h2> Worker contract </h2>
+     <div class="row mt-3"> 
+        <h4> Worker </h4>
         <div class="col-md-5"> <p><b> Name: </b> @Model.WorkerName </p></div>
         <div class="col-md-5"> <p><b> Surname: </b> @Model.WorkerSurname </p></div>
      </div>
 
-    <div class="row mt-1">
-        <h5> Contract type: </h5>
+    <div class="row mt-3">
+        <h4> Contract type: </h4>
         <div class="col-md-5"> <p> @Model.Contract?.ContractType </p></div>
     </div>
 
 
-     <div class="row mt-1">
-        <h5> Weekly hours contracted: </h5>
+     <div class="row mt-3">
+        <h4> Weekly hours contracted: </h4>
         <div class="col-md-5"> <p><b> Minimum: </b> @Model.Contract?.MinWeeklyHours </p></div>
         <div class="col-md-5"> <p><b> Maximum: </b> @Model.Contract?.MaxWeeklyHours </p></div>
      </div>
 
-    <div class="row mt-1">
-        <h5> Weekly days contracted: </h5>
+    <div class="row mt-3">
+        <h4> Weekly days contracted: </h4>
         <div class="col-md-5"> <p><b> Minimum: </b> @Model.Contract?.MinWeeklyDays </p></div>
         <div class="col-md-5"> <p><b> Maximum: </b> @Model.Contract?.MaxWeeklyDays </p></div>
     </div>
 
-    <div class="row mt-1">
-        <h5> Working day shift duration: </h5>
+    <div class="row mt-3">
+        <h4> Working day shift duration: </h4>
         <div class="col-md-5"> <p><b> Minimum: </b> @Model.Contract?.MinDailyHours </p></div>
         <div class="col-md-5"> <p><b> Maximum: </b> @Model.Contract?.MaxDailyHours </p></div>
     </div>
