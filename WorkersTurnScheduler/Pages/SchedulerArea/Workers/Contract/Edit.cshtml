@@ -13,23 +13,23 @@
             </select>
             </div>
         </div>
-
+        <input type="text" name="id" asp-for="EditContract.Id" hidden />
         <div class="row mt-1">
             <h5> Weekly hours contracted: </h5>
-                <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinWeeklyHours" />  </p></div>
-                <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxWeeklyHours" /> </p></div>
+            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinWeeklyHours" />  </p></div>
+            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxWeeklyHours" /> </p></div>
         </div>
 
         <div class="row mt-1">
             <h5> Weekly days contracted: </h5>
-                <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinWeeklyDays" /> </p></div>
-                <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxWeeklyDays" /> </p></div>
+            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinWeeklyDays" /> </p></div>
+            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxWeeklyDays" /> </p></div>
         </div>
 
         <div class="row mt-1">
             <h5> Working day shift duration: </h5>
-                <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinDailyHours" /> </p></div>
-                <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxDailyHours" /> </p></div>
+            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" asp-for="EditContract.MinDailyHours" /> </p></div>
+            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" asp-for="EditContract.MaxDailyHours" /> </p></div>
         </div>
         <div class="row mt-2">
             <a href="#"> <button type="submit" value="Save" class="btn btn-primary"> Save </button> </a>
