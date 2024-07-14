@@ -42,6 +42,7 @@ namespace WorkersTurnScheduler.Services
             if (newContract == null)
                 return;
 
+            newContract.ContractType = contract.ContractType;
             newContract.MinWeeklyHours = contract.MinWeeklyHours;
             newContract.MaxWeeklyHours = contract.MaxWeeklyHours;
             newContract.MinDailyHours = contract.MinDailyHours;

@@ -26,7 +26,7 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// The contract type.
         /// </value>
-        public ContractType ContractType { get; private set; } = ContractType.Regular;
+        public ContractType ContractType { get; set; } = ContractType.Regular;
 
         /// <value>
         /// The maximum number of working hours during a week. 
