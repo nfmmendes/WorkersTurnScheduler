@@ -4,7 +4,7 @@ using WorkersTurnScheduler.Domain;
 using WorkersTurnScheduler.Services;
 
 
-namespace WorkersTurnScheduler.Pages.SchedulerArea.Workers.Contract
+namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker.Contract
 {
     /// <summary>
     /// Class <c>ContractModel</c> is a page model class that contains data and methods 
