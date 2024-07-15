@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace WorkersTurnScheduler.Domain
 {
@@ -20,17 +21,20 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// The contract id.
         /// </value>
+        [DisplayName("Id")]
         [Required, Key]
         public Guid Id { get; private set; }
 
         /// <value>
         /// The contract type.
         /// </value>
+        [DisplayName("Contract type")]
         public ContractType ContractType { get; set; } = ContractType.Regular;
 
         /// <value>
         /// The maximum number of working hours during a week. 
         /// </value>
+        [DisplayName("Maximum working hours on week")]
         [Required]
         [Range(minimum: 0, maximum: 24*7, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MaxWeeklyHours { get; set; } = 24 * 7;
@@ -38,6 +42,7 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// The minimum number of working hours during a week. 
         /// </value>
+        [DisplayName("Minimum working hours on week")]
         [Required]
         [Range(minimum:0, maximum: 24*7, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MinWeeklyHours { get; set; } = 0;
@@ -45,6 +50,7 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// The maximum number of working days in a week. 
         /// </value>
+        [DisplayName("Maximum working days on week")]
         [Required]
         [Range(minimum:0, maximum:7, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MaxWeeklyDays { get; set; } = 7;
@@ -52,6 +58,7 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// The minimum number of working days in a week. 
         /// </value>
+        [DisplayName("Minimum working days on week")]
         [Required]
         [Range(minimum:0, maximum: 7, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MinWeeklyDays { get; set; } = 1;
@@ -59,6 +66,7 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// The maximum number of working hours in a day.
         /// </value>
+        [DisplayName("Maximum working hours on day")]
         [Required]
         [Range(minimum:0, maximum: 24, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MaxDailyHours { get; set; } = 1;
@@ -66,6 +74,7 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// The minimum number of working hours in a day.
         /// </value>
+        [DisplayName("Minimum working hours on day")]
         [Required]
         [Range (minimum:0, maximum: 24, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MinDailyHours { get; set; } = 1;
