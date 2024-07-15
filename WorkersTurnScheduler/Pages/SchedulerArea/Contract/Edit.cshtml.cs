@@ -55,7 +55,12 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Contract
             return Page();
         }
 
-        public IActionResult OnPostAsync(Guid id)
+        /// <summary>
+        /// Edit page post method
+        /// </summary>
+        /// <param name="id"> Id of the contract to be edited</param>
+        /// <returns> A page, according to the edition result </returns>
+        public IActionResult OnPost(Guid id)
         {
             if (!ModelState.IsValid)
             {
