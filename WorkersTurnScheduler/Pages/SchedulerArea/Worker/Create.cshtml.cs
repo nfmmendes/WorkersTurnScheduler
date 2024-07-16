@@ -40,5 +40,11 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
         {
             return Page();
         }
+
+        public IActionResult OnPost() {
+            _repository.AddWorker(Worker);
+            Worker = new Domain.Worker();
+            return RedirectToPage("./List");
+        }
     }
 }
