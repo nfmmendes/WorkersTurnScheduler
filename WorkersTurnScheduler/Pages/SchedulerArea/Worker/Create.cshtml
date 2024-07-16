@@ -6,53 +6,93 @@
 
 <div class="container">
     <h2> New worker </h2>
-    <div class="row mb-3 mt-5">
-        <h3>Personal data</h3>
-        <div class="col-4">
-            <label> Name: </label>
-            <input type="text" name="name"/>
-        </div>
-        <div class="col-4">
-            <label> Surname: </label>
-            <input type="text" name="surname" />
-        </div>
-    </div>
-    <div class="row mb-3">
-        <h3>Professional details</h3>
-        <div class="col-4">
-            <label>Is active?</label>
-            <label>  </label>
-        </div>
-     </div>
-     <div class="row mb-3">
-        <div class="row mt-1">
-            <label> Contract type: </label>
-            <div class="col-5">
-                <select class="form-control"
-                        asp-items="Html.GetEnumSelectList<ContractType>()">
-                    <option value="">-- Select Department --</option>
-                </select>
+    <form method="post">
+        <div class="row mb-3 mt-5">
+            <h3>Personal data</h3>
+            <div class="col-4 mt-3">
+                <label> Name: </label>
+                <input type="text" asp-for="Worker.Name"/>
+            </div>
+            <div class="col-4  mt-3">
+                <label> Surname: </label>
+                <input type="text" asp-for="Worker.Surname" />
             </div>
         </div>
-        <input type="text" name="id" hidden />
-        <div class="row mt-1">
-            <h5> Weekly hours contracted: </h5>
-            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" />  </p></div>
-            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" /> </p></div>
+        <div class="row mb-3">
+                <h3>Professional details</h3>
+                <div class="col-4 mt-3">
+                    <label>Is active?</label>
+                    <input type="checkbox" asp-for="Worker.IsActive" />
+                </div>
+            </div>
+        <!-- Contract information -->
+        <div class="row">
+            <div class="row">
+                <div class="col-5">
+                    <label> Contract type: </label>
+                    <select class="mt-2" asp-for="Worker.Contract.ContractType" class="form-control"
+                            asp-items="Html.GetEnumSelectList<ContractType>()">
+                        <option value=""> -- Select Contract Type -- </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <h5> Weekly hours contracted: </h5>
+                <div class="col-md-4">
+                    <p>
+                        <label class="w-50"> Minimum: </label>
+                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MinWeeklyHours" />
+                    </p>
+                    <span asp-validation-for="Worker.Contract.MinWeeklyHours" class="text-warning"></span>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <label class="w-50"> Maximum: </label>
+                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MaxWeeklyHours" />
+                    </p>
+                    <span asp-validation-for="Worker.Contract.MaxWeeklyHours" class="text-warning"></span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <h5> Weekly days contracted: </h5>
+                <div class="col-md-4">
+                    <p>
+                        <label class="w-50"> Minimum: </label>
+                        <input class="form-control  w-25" type="number" min="0" asp-for="Worker.Contract.MinWeeklyDays" />
+                    </p>
+                    <span asp-validation-for="Worker.Contract.MinWeeklyDays" class="text-warning"></span>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <label class="w-50"> Maximum: </label>
+                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MaxWeeklyDays" />
+                    </p>
+                    <span asp-validation-for="Worker.Contract.MaxWeeklyDays" class="text-warning"></span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <h5> Working day shift duration: </h5>
+                <div class="col-md-4">
+                    <p>
+                        <label class="w-50"> Minimum: </label>
+                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MinDailyHours" />
+                    </p>
+                    <span asp-validation-for="Worker.Contract.MinDailyHours" class="text-warning"></span>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <label class="w-50"> Maximum: </label>
+                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MaxDailyHours" />
+                    </p>
+                    <span asp-validation-for="Worker.Contract.MaxDailyHours" class="text-warning"></span>
+                </div>
+            </div>
         </div>
-        <div class="row mt-1">
-            <h5> Weekly days contracted: </h5>
-            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" /> </p></div>
-            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" /> </p></div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <button type="submit" value="Save" class="btn btn-primary"> Save </button>
+                <button class="btn btn-secondary"> Cancel </button>
+            </div>
         </div>
-        <div class="row mt-1">
-            <h5> Working day shift duration: </h5>
-            <div class="col-md-5"> <p><label> Minimum: </label> <input type="number" min="0" /> </p></div>
-            <div class="col-md-5"> <p><label> Maximum: </label> <input type="number" min="0" /> </p></div>
-        </div>
-     </div>
-    <div class="row mt-2">
-        <a href="#"> <button type="submit" value="Save" class="btn btn-primary"> Save </button> </a>
-        <a href="#"> <button class="btn btn-secondary"> Cancel </button> </a>
-    </div>
+     </form>
 </div>

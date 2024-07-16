@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkersTurnScheduler.Services;
+using WorkersTurnScheduler.Domain;
 
 namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
 {
@@ -15,13 +16,20 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
         /// </value>
         IWorkerRepository _repository;
 
+
+        /// <value>
+        /// Hold the worker data to be inserted in the repository. 
+        /// </value>
+        [BindProperty]
+        public Domain.Worker Worker { get; set; } = new Domain.Worker();
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="repository">Worker repository, injected as a dependence.</param>
         public CreateModel(IWorkerRepository repository)
         {
-            _repository = repository;
+            _repository = repository; 
         }
 
         /// <summary>
