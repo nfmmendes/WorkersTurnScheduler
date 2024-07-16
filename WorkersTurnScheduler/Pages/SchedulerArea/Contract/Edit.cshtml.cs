@@ -18,8 +18,6 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Contract
         /// </value>
         IContractRepository _contractRepository;
         
-        public Guid ContractId { get; set; }
-
         /// <value>
         /// DTO holding the current/new contract data.
         /// </value>
@@ -43,10 +41,11 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Contract
             HttpContext.Request.RouteValues.TryGetValue("contractId", out object contractIdObject);
             HttpContext.Request.RouteValues.TryGetValue("workerId", out object workerIdObject);
 
-            if(contractIdObject != null)
-                ContractId = new Guid(contractIdObject.ToString());
-
-            EditContract = _contractRepository.getContract(ContractId);
+            if (contractIdObject != null)
+            {
+                var contractId = new Guid(contractIdObject.ToString());
+                EditContract = _contractRepository.getContract(contractId);
+            }
 
             if (EditContract == null) {
                 return RedirectToPage($"../Contract/Index");
