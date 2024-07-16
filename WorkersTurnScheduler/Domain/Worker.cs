@@ -15,23 +15,23 @@ namespace WorkersTurnScheduler.Domain
         /// Worker name. 
         /// </value>
         [Required]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <value>
         /// Worker surnname. 
         /// </value>
         [Required]
-        public string Surname { get; private set; }
+        public string Surname { get; set; }
 
         /// <value>
         /// If the worker is currently active. 
         /// </value>
-        public bool IsActive { get; private set; }
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// The worker contract.
         /// </summary>
-        public Contract? Contract { get; private set; }
+        public Contract? Contract { get; set; }
 
         private static UInt128 LastId { get; set; }
 
