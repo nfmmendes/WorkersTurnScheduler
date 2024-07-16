@@ -52,6 +52,10 @@ namespace WorkersTurnScheduler.Domain
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Worker() { }
+        public Worker() {
+            Name = "";
+            Surname = "";
+            Contract = new Contract();
+        }
     }
 }
