@@ -49,5 +49,16 @@ namespace WorkersTurnScheduler.Services
         {
             return _context.Workers.Include(x => x.Contract).FirstOrDefault(x=> x.Id == id);
         }
+
+
+        /// <summary>
+        /// Add a new worker in the repository
+        /// </summary>
+        /// <param name="worker"> The new worker</param>
+        public void AddWorker(Worker worker)
+        {
+            _context.Workers.Add(worker);
+            _context.SaveChanges();
+        }
     }
 }
