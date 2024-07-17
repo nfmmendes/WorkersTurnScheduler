@@ -22,11 +22,15 @@
                 <h3>Professional details</h3>
                 <div class="col-4 mt-3">
                     <label>Is active?</label>
-                    <input type="checkbox" asp-for="Worker.IsActive" />
+                    <input id="isActiveCheckBox" type="checkbox" asp-for="Worker.IsActive" />
                 </div>
-            </div>
+                <div class="col-4 mt-3">
+                    <label>Has contract?</label>
+                    <input type="checkbox" id="hasContractCheckBox" asp-for="HasContract" />
+                </div>
+        </div>
         <!-- Contract information -->
-        <div class="row">
+        <div id="contractSection" class="row">
             <div class="row">
                 <div class="col-5">
                     <label> Contract type: </label>
@@ -41,14 +45,16 @@
                 <div class="col-md-4">
                     <p>
                         <label class="w-50"> Minimum: </label>
-                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MinWeeklyHours" />
+                        <input class="form-control w-25" type="number" min="0" 
+                                asp-for="Worker.Contract.MinWeeklyHours" />
                     </p>
                     <span asp-validation-for="Worker.Contract.MinWeeklyHours" class="text-warning"></span>
                 </div>
                 <div class="col-md-4">
                     <p>
                         <label class="w-50"> Maximum: </label>
-                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MaxWeeklyHours" />
+                        <input class="form-control w-25" type="number" min="0" 
+                                asp-for="Worker.Contract.MaxWeeklyHours" />
                     </p>
                     <span asp-validation-for="Worker.Contract.MaxWeeklyHours" class="text-warning"></span>
                 </div>
@@ -58,14 +64,16 @@
                 <div class="col-md-4">
                     <p>
                         <label class="w-50"> Minimum: </label>
-                        <input class="form-control  w-25" type="number" min="0" asp-for="Worker.Contract.MinWeeklyDays" />
+                        <input class="form-control  w-25" type="number" min="0" 
+                                asp-for="Worker.Contract.MinWeeklyDays" />
                     </p>
                     <span asp-validation-for="Worker.Contract.MinWeeklyDays" class="text-warning"></span>
                 </div>
                 <div class="col-md-4">
                     <p>
                         <label class="w-50"> Maximum: </label>
-                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MaxWeeklyDays" />
+                        <input class="form-control w-25" type="number" min="0" 
+                                asp-for="Worker.Contract.MaxWeeklyDays" />
                     </p>
                     <span asp-validation-for="Worker.Contract.MaxWeeklyDays" class="text-warning"></span>
                 </div>
@@ -75,7 +83,8 @@
                 <div class="col-md-4">
                     <p>
                         <label class="w-50"> Minimum: </label>
-                        <input class="form-control w-25" type="number" min="0" asp-for="Worker.Contract.MinDailyHours" />
+                        <input class="form-control w-25" type="number" min="0" 
+                                asp-for="Worker.Contract.MinDailyHours" />
                     </p>
                     <span asp-validation-for="Worker.Contract.MinDailyHours" class="text-warning"></span>
                 </div>
@@ -96,3 +105,32 @@
         </div>
      </form>
 </div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#contractSection').toggle($('#hasContractCheckBox').is(':checked'));
+
+            $('#hasContractCheckBox').change(function () {
+                $('#contractSection').toggle($(this).is(':checked'));
+            });
+
+            // Toggle hasContractCheckBox and contractSection when isActiveCheckBox changes
+            $('#isActiveCheckBox').change(function () {
+                var isActiveChecked = $(this).is(':checked');
+               
+                if(isActiveChecked)
+                    $('#hasContractCheckBox').prop('checked', true)
+
+                var hasContractChecked = $('#hasContractCheckBox').is(':checked');
+                $('#contractSection').toggle(hasContractChecked);
+            });
+        });
+    </script>
+}
+
