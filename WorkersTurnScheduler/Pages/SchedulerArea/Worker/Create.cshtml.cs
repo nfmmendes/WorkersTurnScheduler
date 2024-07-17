@@ -14,8 +14,10 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
         /// <value>
         /// Worker's repository.
         /// </value>
-        IWorkerRepository _repository;
+        private IWorkerRepository _repository;
 
+        [BindProperty]
+        public bool HasContract { get; set; }
 
         /// <value>
         /// Hold the worker data to be inserted in the repository. 
@@ -42,8 +44,12 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
         }
 
         public IActionResult OnPost() {
+
+            if (!HasContract)
+                Worker.Contract = null;
+
             _repository.AddWorker(Worker);
-            Worker = new Domain.Worker();
+            
             return RedirectToPage("./List");
         }
     }
