@@ -1,0 +1,35 @@
+﻿@page
+@model WorkersTurnScheduler.Pages.SchedulerArea.Worker.EditModel
+@{
+}
+
+<form method="post">
+    <div class="row mb-3 mt-5">
+        <h3>Personal data</h3>
+        <div class="col-4 mt-3">
+            <label> Name: </label>
+            <input type="text" placeholder="Type the name" asp-for="Worker.Name" />
+        </div>
+        <div class="col-4  mt-3">
+            <label> Surname: </label>
+            <input type="text" placeholder="Type the surname" asp-for="Worker.Surname" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <h3>Professional details</h3>
+        <div class="col-4 mt-3">
+            <label>Is active?</label>
+            <input id="isActiveCheckBox" type="checkbox" asp-for="Worker.IsActive" />
+        </div>
+        <div class="col-4 mt-3">
+            <label>Has contract?</label>
+            <input type="checkbox" id="hasContractCheckBox" asp-for="HasContract" />
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <button type="submit" value="Save" class="btn btn-primary"> Save </button>
+            <button class="btn btn-secondary"> Cancel </button>
+        </div>
+    </div>
+</form>

@@ -9,6 +9,8 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
     {
         private IWorkerRepository _repository;
 
+        public bool HasContract { get; set; }
+
         [BindProperty]
         public Domain.Worker? Worker { get; set; }
 
@@ -25,6 +27,8 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
             {
                 return RedirectToPage("../Error");
             }
+
+            HasContract = Worker.Contract != null;
 
             return Page();
         }
