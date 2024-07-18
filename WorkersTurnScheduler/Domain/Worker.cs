@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WorkersTurnScheduler.Domain
 {
@@ -14,19 +15,29 @@ namespace WorkersTurnScheduler.Domain
         /// <value>
         /// Worker name. 
         /// </value>
+        [DisplayName("Name")]
         [Required]
         public string Name { get; set; }
 
         /// <value>
         /// Worker surnname. 
         /// </value>
+        [DisplayName("Surname")]
         [Required]
         public string Surname { get; set; }
 
         /// <value>
         /// If the worker is currently active. 
         /// </value>
+        [DisplayName("Is active")]
         public bool IsActive { get; set; }
+
+        [DisplayName("Has contract")]
+        [NotMapped]
+        public bool HasContract
+        {
+            get { return Contract != null; }
+        }
 
         /// <summary>
         /// The worker contract.
