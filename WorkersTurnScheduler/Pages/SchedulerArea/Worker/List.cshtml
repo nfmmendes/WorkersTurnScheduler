@@ -30,10 +30,10 @@
                             <th>  @Html.DisplayNameFor(model => model.Workers[0].IsActive) </th>
                         </tr>
                     </thead>
-                    @foreach (var elem in Model.Workers) {
+                    @foreach (var (elem, index) in Model.Workers.Select((value, i) => (value,i+1))) {
                         var isActive = elem.IsActive ? "Yes" : "No"; 
                         <tr>
-                            <td> @Html.DisplayFor(modelItem => elem.Id)</td>
+                            <td> @Html.DisplayFor(modelItem => index)</td>
                             <td> @Html.DisplayFor(modelItem => elem.Name) </td>
                             <td> @Html.DisplayFor(modelItem => elem.Surname)</td>
                             <td> @isActive </td>
