@@ -37,7 +37,9 @@
                             <td> @Html.DisplayFor(modelItem => elem.Name) </td>
                             <td> @Html.DisplayFor(modelItem => elem.Surname)</td>
                             <td> @isActive </td>
-                            <td> <a href=@($"./?workerId={elem.Id}")> <button>Details</button>  </a></td>
+                            <td> <a href=@($"./?workerId={elem.Id}")> <button class="btn btn-sm btn-primary">Details</button></a> </td>
+                            <td> <a href=@($"./Edit?workerId={elem.Id}")> <button class="btn btn-sm btn-warning">Edit</button></a> </td>
+                            <td> <a href=@($"./?workerId={elem.Id}")> <button class="btn btn-sm btn-danger">Delete</button></a> </td>
                         </tr>
                     }
                 </table>
