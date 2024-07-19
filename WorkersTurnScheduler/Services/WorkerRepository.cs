@@ -19,7 +19,7 @@ namespace WorkersTurnScheduler.Services
         /// <param name="context">The scheduler context</param>
         public WorkerRepository(SchedulerContext context)
         {
-           _context = context;
+            _context = context;
             if (_context.Workers.Count() == 0)
             {
                 _context.Workers.AddRange(new List<Worker>{
@@ -47,7 +47,7 @@ namespace WorkersTurnScheduler.Services
         /// <returns>A worker, if it is found. Null otherwise.</returns>
         public Worker? GetWorker(Guid id)
         {
-            return _context.Workers.Include(x => x.Contract).FirstOrDefault(x=> x.Id == id);
+            return _context.Workers.Include(x => x.Contract).FirstOrDefault(x => x.Id == id);
         }
 
 
@@ -58,6 +58,22 @@ namespace WorkersTurnScheduler.Services
         public void AddWorker(Worker worker)
         {
             _context.Workers.Add(worker);
+            _context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Remove a worker in the repository
+        /// </summary>
+        /// <param name="workerId">The worker id</param>
+        public void RemoveWorker(Guid workerId)
+        {
+            var worker = _context.Workers.FirstOrDefault(x => x.Id == workerId);
+
+            if (worker != null)
+            {
+                _context.Workers.Remove(worker);
+            }
+
             _context.SaveChanges();
         }
     }

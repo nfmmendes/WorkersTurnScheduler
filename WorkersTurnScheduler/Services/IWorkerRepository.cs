@@ -25,5 +25,11 @@ namespace WorkersTurnScheduler.Services
         /// </summary>
         /// <param name="worker"> The new worker</param>
         void AddWorker(Worker worker);
+
+        /// <summary>
+        /// Remove a worker in the repository
+        /// </summary>
+        /// <param name="workerId">The worker id</param>
+        void RemoveWorker(Guid workerId);
     }
 }
