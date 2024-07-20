@@ -6,12 +6,16 @@
 
 <style> 
     #worker-table table, #worker-table table tr  {
-          border: 1px solid black;
-          border-collapse: collapse;
+        border: 1px solid black;
+        border-collapse: collapse;
     }   
     
-    #worker-table table td { 
-            padding: 4px 8px;
+    #worker-table table th, td {
+        padding: 4px 12px;
+    }
+
+    worker-table th:empty, td:has(.btn) {
+        padding: 4px 4px;
     }
 
 </style>
@@ -28,22 +32,26 @@
                             <th>  @Html.DisplayNameFor(model => model.Workers[0].Name) </th>
                             <th>  @Html.DisplayNameFor(model => model.Workers[0].Surname) </th>
                             <th>  @Html.DisplayNameFor(model => model.Workers[0].IsActive) </th>
+                            <th>  @Html.DisplayNameFor(model => model.Workers[0].HasContract) </th>
+                            <th colspan="3"></th>
                         </tr>
                     </thead>
                     @foreach (var (elem, index) in Model.Workers.Select((value, i) => (value,i+1))) {
-                        var isActive = elem.IsActive ? "Yes" : "No"; 
+                        var isActive = elem.IsActive ? "Yes" : "No";
+                        var hasContract = elem.HasContract ? "Yes" : "No";
                         <tr>
                             <td> @Html.DisplayFor(modelItem => index)</td>
                             <td> @Html.DisplayFor(modelItem => elem.Name) </td>
                             <td> @Html.DisplayFor(modelItem => elem.Surname)</td>
-                            <td> @isActive </td>
+                            <td class="text-center"> @isActive </td>
+                            <td class="text-center"> @hasContract </td>
                             <td> <a href=@($"./?workerId={elem.Id}")> <button class="btn btn-sm btn-primary">Details</button></a> </td>
-                            <td> <a href=@($"./Edit?workerId={elem.Id}")> <button class="btn btn-sm btn-warning">Edit</button></a> </td>
+                            <td> <a href=@($"./Edit?workerId={elem.Id}")> <button class="btn btn-sm btn-warning ml-2">Edit</button></a> </td>
                             <td> <form method="post" onsubmit="confirmDelete(event)">
-                                      <button asp-page-handler="delete" class="btn btn-sm btn-danger">Delete</button>
-                                      <input type="hidden" name="workerId" value="@elem.Id" />
-                                 </form> 
-                             </td>
+                                        <button asp-page-handler="delete" class="btn btn-sm btn-danger ml-2">Delete</button>
+                                        <input type="hidden" name="workerId" value="@elem.Id" />
+                                    </form>
+                            </td>
                         </tr>
                     }
                 </table>
