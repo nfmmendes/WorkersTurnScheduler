@@ -37,6 +37,21 @@
     @if(Model.Contract != null){
         <div class="row mt-1">
             <a href=@($"./Edit/{Model.Contract.Id}")> <button class="btn btn-primary"> Edit </button> </a>
+            <form method="post" onsubmit="confirmDelete(event)">
+                <button asp-page-handler="delete" class="btn btn-sm btn-danger ml-2">Delete</button>
+                <input type="hidden" name="contractId" value="@Model.Contract.Id" />
+            </form>
         </div>
     }
 </div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function confirmDelete(e) {
+            if (!window.confirm("Are you sure that you want delete this user?")) {
+                e.preventDefault();
+            }
+        }
+    </script>
+}
