@@ -20,5 +20,11 @@ namespace WorkersTurnScheduler.Services
         /// <param name="id"> The contract id</param>
         /// <param name="contract"> The object with the new contract data.</param>
         public void updateContract(Guid id, Contract contract);
+
+        /// <summary>
+        /// Remove a contract from the repository
+        /// </summary>
+        /// <param name="id"> The id of the contract to be remved </param>
+        public void removeContract(Guid id);
     }
 }

@@ -53,5 +53,20 @@ namespace WorkersTurnScheduler.Services
             _context.Contracts.Update(newContract);
             _context.SaveChanges();
         }
+
+        /// <summary>
+        /// Remove a contract from the repository
+        /// </summary>
+        /// <param name="id"> The id of the contract to be remved </param>
+        public void removeContract(Guid id)
+        {
+            var contract = _context.Contracts.FirstOrDefault(x=>x.Id == id);
+
+            if(contract != null)
+            {
+                _context.Contracts.Remove(contract);
+                _context.SaveChanges();
+            }
+        }
     }
 }
