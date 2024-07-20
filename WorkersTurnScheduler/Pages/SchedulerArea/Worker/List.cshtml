@@ -39,7 +39,11 @@
                             <td> @isActive </td>
                             <td> <a href=@($"./?workerId={elem.Id}")> <button class="btn btn-sm btn-primary">Details</button></a> </td>
                             <td> <a href=@($"./Edit?workerId={elem.Id}")> <button class="btn btn-sm btn-warning">Edit</button></a> </td>
-                            <td> <a href=@($"./?workerId={elem.Id}")> <button class="btn btn-sm btn-danger">Delete</button></a> </td>
+                            <td> <form method="post" onsubmit="confirmDelete(event)">
+                                      <button asp-page-handler="delete" class="btn btn-sm btn-danger">Delete</button>
+                                      <input type="hidden" name="workerId" value="@elem.Id" />
+                                 </form> 
+                             </td>
                         </tr>
                     }
                 </table>
@@ -51,3 +55,13 @@
         <a asp-page="./Create/"> <button class="btn btn-primary"> Add worker </button> </a>
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        function confirmDelete(e){
+            if (!window.confirm("Are you sure that you want delete this user?")) {
+                e.preventDefault();
+             }
+        }
+    </script>
+}

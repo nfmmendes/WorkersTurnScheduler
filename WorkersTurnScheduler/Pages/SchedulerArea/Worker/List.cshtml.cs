@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Primitives;
 using WorkersTurnScheduler.Domain;
 using WorkersTurnScheduler.Services;
 
@@ -37,6 +38,18 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
         public void OnGet()
         {
             Workers = _repository.GetAllWorkers();
+        }
+
+        /// <summary>
+        /// Handler to delete a worker
+        /// </summary>
+        /// <param name="workerId"> The worker id</param>
+        /// <returns> The result of redirection to the page itself </returns>
+        public IActionResult OnPostDelete(Guid workerId)
+        {
+            _repository.RemoveWorker(workerId);
+
+            return RedirectToPage("./List");
         }
     }
 }
