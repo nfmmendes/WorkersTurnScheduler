@@ -23,14 +23,24 @@
             <label>@Html.DisplayNameFor(model => model.Worker.IsActive)?</label>
             <label> @Model.Worker.IsActive </label>
         </div>
-        <div class="col-4">
-            <label> @Html.DisplayNameFor(model => model.Worker.Contract.ContractType): </label>
-            <label> @Model.Worker.Contract?.ContractType </label>
+        <div class="col-3">
+            <label>@Html.DisplayNameFor(model => model.Worker.HasContract)?</label>
+            <label> @Model.Worker.HasContract </label>
         </div>
+        @if (Model.Worker.HasContract)
+        {
+            <div class="col-3">
+                <label> @Html.DisplayNameFor(model => model.Worker.Contract.ContractType): </label>
+                <label> @Model.Worker.Contract?.ContractType </label>
+            </div>
+        }
     </div>
     <div class="row">
         <div class="col-12">
-            <a class="btn btn-primary" href="./{@Model.Worker.Id}/Contract/Index">Contract</a>
+            @if (Model.Worker.HasContract)
+            {
+                <a class="btn btn-primary" href="./{@Model.Worker.Id}/Contract/Index">Contract</a>
+            }
             <button type="button" class="btn btn-primary"> Availability </button>
             <button type="button" class="btn btn-secondary"> Back</button>
         </div>
