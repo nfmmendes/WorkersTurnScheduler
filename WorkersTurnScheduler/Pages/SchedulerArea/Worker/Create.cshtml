@@ -100,7 +100,7 @@
         <div class="row mt-2">
             <div class="col-12">
                 <button type="submit" value="Save" class="btn btn-primary"> Save </button>
-                <button class="btn btn-secondary"> Cancel </button>
+                <button class="btn btn-secondary" onclick="confirmCancel()"> Cancel </button>
             </div>
         </div>
      </form>
@@ -113,6 +113,12 @@
     }
 
     <script type="text/javascript">
+
+        function confirmCancel() {
+            if (window.confirm("Are you sure that you want to cancel this operation?\n All the input data will be lost."))
+                history.back();
+        }
+
         $(document).ready(function () {
             $('#contractSection').toggle($('#hasContractCheckBox').is(':checked'));
 
