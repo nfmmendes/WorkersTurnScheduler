@@ -100,13 +100,6 @@ namespace WorkersTurnScheduler.Domain
         /// Default constructor.
         /// </summary>
         public Contract() {
-            ContractType = ContractType.Regular;
-            MinWeeklyHours = 20;
-            MaxWeeklyHours = 40;
-            MinWeeklyDays = 3;
-            MaxWeeklyDays = 7;
-            MinDailyHours = 4;
-            MaxDailyHours = 8;
         }
     }
 }
