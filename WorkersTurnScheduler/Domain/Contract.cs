@@ -69,7 +69,7 @@ namespace WorkersTurnScheduler.Domain
         [DisplayName("Maximum working hours on day")]
         [Required]
         [Range(minimum:0, maximum: 24, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
-        public int MaxDailyHours { get; set; } = 1;
+        public int MaxDailyHours { get; set; } = 24;
 
         /// <value>
         /// The minimum number of working hours in a day.
