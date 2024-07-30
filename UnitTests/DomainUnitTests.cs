@@ -1,4 +1,5 @@
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using WorkersTurnScheduler.Domain;
 
 namespace UnitTests;
@@ -6,8 +7,17 @@ namespace UnitTests;
 public class DomainUnitTests
 {
     public static IEnumerable<object[]> ValidWeeklyHours => Enumerable.Range(0, 41).Select(x => (new object[] { x }));
+    public static IEnumerable<object[]> InvalidWeeklyHours => new object []{-1, -3, 24*7+1}.Select(x => (new object[] { x }));
     public static IEnumerable<object[]> ValidWorkingDays => Enumerable.Range(0, 8).Select(x => (new object[] { x }));
     public static IEnumerable<object[]> ValidDailyWorkingHours => Enumerable.Range(0, 25).Select(x => (new object[] { x }));
+
+    private IList<ValidationResult> ValidateModel(object model)
+    {
+        var validationResults = new List<ValidationResult>();
+        var ctx = new ValidationContext(model, null, null);
+        Validator.TryValidateObject(model, ctx, validationResults, true);
+        return validationResults;
+    }
 
     [Fact]
     public void TestContractDefaultConstructor()
@@ -48,6 +58,16 @@ public class DomainUnitTests
     }
 
     [Theory]
+    [MemberData(nameof(InvalidWeeklyHours))]
+    public void TestSetInvalidMinWeeklyHours(int value)
+    {
+        Contract contract = new Contract();
+
+        contract.MinWeeklyHours = value;
+        Assert.Contains(ValidateModel(contract), x =>x.MemberNames.Contains("MinWeeklyHours") && x.ErrorMessage != null);
+    }
+
+    [Theory]
     [MemberData(nameof(ValidWeeklyHours))]
     public void TestSetValidMaxWeeklyHours(int value)
     {
@@ -55,6 +75,16 @@ public class DomainUnitTests
 
         contract.MaxWeeklyHours = value;
         Assert.True(contract.MaxWeeklyHours == value);
+    }
+
+    [Theory]
+    [MemberData(nameof(InvalidWeeklyHours))]
+    public void TestSetInvalidMaxWeeklyHours(int value)
+    {
+        Contract contract = new Contract();
+
+        contract.MaxWeeklyHours = value;
+        Assert.Contains(ValidateModel(contract), x => x.MemberNames.Contains("MaxWeeklyHours") && x.ErrorMessage != null);
     }
 
     [Theory]
