@@ -96,4 +96,16 @@ public class DomainUnitTests
         contract.MaxDailyHours = value;
         Assert.True(contract.MaxDailyHours == value);
     }
+
+    [Theory]
+    [InlineData(ContractType.Freelance)]
+    [InlineData(ContractType.Regular)]
+    [InlineData(ContractType.Temporary)]
+    public void TestSetContractType(ContractType contractType)
+    {
+        Contract contract = new Contract();
+        contract.ContractType = contractType;
+
+        Assert.True(contract.ContractType == contractType);
+    }
 }
