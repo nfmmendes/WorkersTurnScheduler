@@ -57,6 +57,7 @@ public class DomainUnitTests
 
         contract.MinWeeklyHours = value;
         Assert.True(contract.MinWeeklyHours == value);
+        Assert.DoesNotContain(ValidateModel(contract), x => x.MemberNames.Contains("MinWeeklyHours") && x.ErrorMessage != null);
     }
 
     [Theory]
@@ -77,6 +78,7 @@ public class DomainUnitTests
 
         contract.MaxWeeklyHours = value;
         Assert.True(contract.MaxWeeklyHours == value);
+        Assert.DoesNotContain(ValidateModel(contract), x => x.MemberNames.Contains("MaxWeeklyHours") && x.ErrorMessage != null);
     }
 
     [Theory]
@@ -97,6 +99,7 @@ public class DomainUnitTests
 
         contract.MinWeeklyDays = value;
         Assert.True(contract.MinWeeklyDays == value);
+        Assert.DoesNotContain(ValidateModel(contract), x => x.MemberNames.Contains("MinWeeklyDays") && x.ErrorMessage != null);
     }
 
     [Theory]
@@ -117,6 +120,7 @@ public class DomainUnitTests
 
         contract.MaxWeeklyDays = value;
         Assert.True(contract.MaxWeeklyDays == value);
+        Assert.DoesNotContain(ValidateModel(contract), x => x.MemberNames.Contains("MaxWeeklyDays") && x.ErrorMessage != null);
     }
 
     [Theory]
@@ -137,6 +141,7 @@ public class DomainUnitTests
 
         contract.MinDailyHours = value;
         Assert.True(contract.MinDailyHours == value);
+        Assert.DoesNotContain(ValidateModel(contract), x => x.MemberNames.Contains("MinDailyHours") && x.ErrorMessage != null);
     }
 
     [Theory]
@@ -157,6 +162,7 @@ public class DomainUnitTests
 
         contract.MaxDailyHours = value;
         Assert.True(contract.MaxDailyHours == value);
+        Assert.DoesNotContain(ValidateModel(contract), x => x.MemberNames.Contains("MaxDailyHours") && x.ErrorMessage != null);
     }
 
     [Theory]
