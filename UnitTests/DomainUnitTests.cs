@@ -1,9 +1,12 @@
+using Newtonsoft.Json.Linq;
 using WorkersTurnScheduler.Domain;
 
 namespace UnitTests;
 
 public class DomainUnitTests
 {
+    public static IEnumerable<object[]> ValidWeekHours => Enumerable.Range(0, 41).Select(x => (new object[] { x }));
+
     [Fact]
     public void TestContractDefaultConstructor()
     {
@@ -11,7 +14,7 @@ public class DomainUnitTests
 
         Assert.True(contract.ContractType == ContractType.Regular);
         Assert.True(contract.MinWeeklyHours == 0);
-        Assert.True(contract.MaxWeeklyHours == 24*7);
+        Assert.True(contract.MaxWeeklyHours == 24 * 7);
         Assert.True(contract.MinWeeklyDays == 1);
         Assert.True(contract.MaxWeeklyDays == 7);
         Assert.True(contract.MinDailyHours == 1);
@@ -21,7 +24,7 @@ public class DomainUnitTests
     [Fact]
     public void TestContractConstructorWithValidValues()
     {
-        Contract contract = new Contract(ContractType.Freelance, new Tuple<int, int>(20, 40), new Tuple<int,int>(3, 4), new Tuple<int,int>(3, 6)); 
+        Contract contract = new Contract(ContractType.Freelance, new Tuple<int, int>(20, 40), new Tuple<int, int>(3, 4), new Tuple<int, int>(3, 6));
 
         Assert.True(contract.ContractType == ContractType.Freelance);
         Assert.True(contract.MinWeeklyHours == 20);
@@ -30,5 +33,25 @@ public class DomainUnitTests
         Assert.True(contract.MaxWeeklyDays == 4);
         Assert.True(contract.MinDailyHours == 3);
         Assert.True(contract.MaxDailyHours == 6);
+    }
+
+    [Theory]
+    [MemberData(nameof(ValidWeekHours))]
+    public void TestSetValidMinWeeklyHours(int value)
+    {
+        Contract contract = new Contract();
+
+        contract.MinWeeklyHours = value;
+        Assert.True(contract.MinWeeklyHours == value);
+    }
+
+    [Theory]
+    [MemberData(nameof(ValidWeekHours))]
+    public void TestSetValidMaxWeeklyHours(int value)
+    {
+        Contract contract = new Contract();
+
+        contract.MaxWeeklyHours = value;
+        Assert.True(contract.MaxWeeklyHours == value);
     }
 }
