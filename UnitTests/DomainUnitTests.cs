@@ -7,6 +7,7 @@ public class DomainUnitTests
 {
     public static IEnumerable<object[]> ValidWeekHours => Enumerable.Range(0, 41).Select(x => (new object[] { x }));
     public static IEnumerable<object[]> ValidWorkingDays => Enumerable.Range(0, 8).Select(x => (new object[] { x }));
+    public static IEnumerable<object[]> ValidDailyWorkingHours => Enumerable.Range(0, 25).Select(x => (new object[] { x }));
 
     [Fact]
     public void TestContractDefaultConstructor()
@@ -74,5 +75,25 @@ public class DomainUnitTests
 
         contract.MaxWeeklyDays = value;
         Assert.True(contract.MaxWeeklyDays == value);
+    }
+
+    [Theory]
+    [MemberData(nameof(ValidDailyWorkingHours))]
+    public void TestSetValidMinDailyWorkingHours(int value)
+    {
+        Contract contract = new Contract();
+
+        contract.MinDailyHours = value;
+        Assert.True(contract.MinDailyHours == value);
+    }
+
+    [Theory]
+    [MemberData(nameof(ValidDailyWorkingHours))]
+    public void TestSetValidMaxDailyWorkingHours(int value)
+    {
+        Contract contract = new Contract();
+
+        contract.MaxDailyHours = value;
+        Assert.True(contract.MaxDailyHours == value);
     }
 }
