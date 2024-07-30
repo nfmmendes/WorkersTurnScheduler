@@ -5,7 +5,7 @@ namespace UnitTests;
 
 public class DomainUnitTests
 {
-    public static IEnumerable<object[]> ValidWeekHours => Enumerable.Range(0, 41).Select(x => (new object[] { x }));
+    public static IEnumerable<object[]> ValidWeeklyHours => Enumerable.Range(0, 41).Select(x => (new object[] { x }));
     public static IEnumerable<object[]> ValidWorkingDays => Enumerable.Range(0, 8).Select(x => (new object[] { x }));
     public static IEnumerable<object[]> ValidDailyWorkingHours => Enumerable.Range(0, 25).Select(x => (new object[] { x }));
 
@@ -38,7 +38,7 @@ public class DomainUnitTests
     }
 
     [Theory]
-    [MemberData(nameof(ValidWeekHours))]
+    [MemberData(nameof(ValidWeeklyHours))]
     public void TestSetValidMinWeeklyHours(int value)
     {
         Contract contract = new Contract();
@@ -48,7 +48,7 @@ public class DomainUnitTests
     }
 
     [Theory]
-    [MemberData(nameof(ValidWeekHours))]
+    [MemberData(nameof(ValidWeeklyHours))]
     public void TestSetValidMaxWeeklyHours(int value)
     {
         Contract contract = new Contract();
