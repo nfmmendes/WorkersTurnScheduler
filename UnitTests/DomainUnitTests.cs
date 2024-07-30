@@ -11,6 +11,7 @@ public class DomainUnitTests
     public static IEnumerable<object[]> ValidWorkingDays => Enumerable.Range(0, 8).Select(x => (new object[] { x }));
     public static IEnumerable<object[]> InvalidWorkingDays => new object[] { -1, -3, 8 }.Select(x => (new object[] { x }));
     public static IEnumerable<object[]> ValidDailyWorkingHours => Enumerable.Range(0, 25).Select(x => (new object[] { x }));
+    public static IEnumerable<object[]> InvalidDailyWorkingHours => new object[] { -1, -3, 25 }.Select(x => (new object[] { x }));
 
     private IList<ValidationResult> ValidateModel(object model)
     {
@@ -139,6 +140,16 @@ public class DomainUnitTests
     }
 
     [Theory]
+    [MemberData(nameof(InvalidDailyWorkingHours))]
+    public void TestSetInvalidMinDailyWorkingHours(int value)
+    {
+        Contract contract = new Contract();
+
+        contract.MinDailyHours = value;
+        Assert.Contains(ValidateModel(contract), x => x.MemberNames.Contains("MinDailyHours") && x.ErrorMessage != null);
+    }
+
+    [Theory]
     [MemberData(nameof(ValidDailyWorkingHours))]
     public void TestSetValidMaxDailyWorkingHours(int value)
     {
@@ -146,6 +157,16 @@ public class DomainUnitTests
 
         contract.MaxDailyHours = value;
         Assert.True(contract.MaxDailyHours == value);
+    }
+
+    [Theory]
+    [MemberData(nameof(InvalidDailyWorkingHours))]
+    public void TestSetInvalidMaxDailyWorkingHours(int value)
+    {
+        Contract contract = new Contract();
+
+        contract.MaxDailyHours = value;
+        Assert.Contains(ValidateModel(contract), x => x.MemberNames.Contains("MaxDailyHours") && x.ErrorMessage != null);
     }
 
     [Theory]
