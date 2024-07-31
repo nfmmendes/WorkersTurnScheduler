@@ -1,17 +1,74 @@
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using WorkersTurnScheduler.Domain;
 
 namespace UnitTests;
 
 public class DomainUnitTests
 {
-    public static IEnumerable<object[]> ValidWeeklyHours => Enumerable.Range(0, 41).Select(x => (new object[] { x }));
-    public static IEnumerable<object[]> InvalidWeeklyHours => new object []{-1, -3, 24*7+1}.Select(x => (new object[] { x }));
-    public static IEnumerable<object[]> ValidWorkingDays => Enumerable.Range(0, 8).Select(x => (new object[] { x }));
-    public static IEnumerable<object[]> InvalidWorkingDays => new object[] { -1, -3, 8 }.Select(x => (new object[] { x }));
-    public static IEnumerable<object[]> ValidDailyWorkingHours => Enumerable.Range(0, 25).Select(x => (new object[] { x }));
-    public static IEnumerable<object[]> InvalidDailyWorkingHours => new object[] { -1, -3, 25 }.Select(x => (new object[] { x }));
+    private static MemberInfo[] _properties = typeof(Contract).GetMembers(BindingFlags.Public | BindingFlags.Instance);
+    private static RangeAttribute _weeklyHoursRange = _properties.First(x => x.Name.Equals("MinWeeklyHours")).GetCustomAttribute<RangeAttribute>();
+    private static RangeAttribute _weeklyDaysRange = _properties.First(x => x.Name.Equals("MinWeeklyDays")).GetCustomAttribute<RangeAttribute>();
+    private static RangeAttribute _dailyWorkingHoursRange = _properties.First(x => x.Name.Equals("MinDailyHours")).GetCustomAttribute<RangeAttribute>();
+
+    public static IEnumerable<object[]> ValidWeeklyHours {
+        get
+        {
+            return Enumerable.Range((int)_weeklyHoursRange.Minimum, (int)_weeklyHoursRange.Maximum + 1)
+                             .Select(x => (new object[] { x }));
+        }
+    }   
+
+    public static IEnumerable<object[]> InvalidWeeklyHours
+    {
+        get
+        {
+            var minimum = (int)_weeklyHoursRange.Minimum;
+            var maximum = (int)_weeklyHoursRange.Maximum;
+            return new object[] { minimum - 1, minimum - 3, maximum + 2 }.Select(x => (new object[] { x }));
+        }
+    }
+
+    public static IEnumerable<object[]> ValidWorkingDays
+    {
+        get
+        {
+            return Enumerable.Range((int)_weeklyDaysRange.Minimum, (int)_weeklyDaysRange.Maximum + 1)
+                             .Select(x => (new object[] { x }));
+        }
+    }
+
+    public static IEnumerable<object[]> InvalidWorkingDays
+    {
+        get
+        {
+            int minimum = (int)_weeklyDaysRange.Minimum;
+            int maximum = (int)_weeklyDaysRange.Maximum;
+
+            return new object[] { minimum - 1, minimum - 3, maximum + 1 }.Select(x => (new object[] { x }));
+        }
+    }
+
+    public static IEnumerable<object[]> ValidDailyWorkingHours
+    {
+        get
+        {
+            return Enumerable.Range((int)_dailyWorkingHoursRange.Minimum, (int)_dailyWorkingHoursRange.Maximum + 1)
+                             .Select(x => (new object[] { x }));
+        }
+    }
+
+
+    public static IEnumerable<object[]> InvalidDailyWorkingHours
+    {
+        get
+        {
+            var minimum = (int)_dailyWorkingHoursRange.Minimum;
+            var maximum = (int)_dailyWorkingHoursRange.Maximum;
+            return new object[] { minimum -1, minimum -3, maximum + 1 }.Select(x => (new object[] { x }));
+        }
+    }
 
     private IList<ValidationResult> ValidateModel(object model)
     {
