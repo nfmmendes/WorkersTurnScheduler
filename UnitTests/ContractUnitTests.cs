@@ -5,7 +5,7 @@ using WorkersTurnScheduler.Domain;
 
 namespace UnitTests;
 
-public class DomainUnitTests
+public class ContractUnitTests
 {
     private static MemberInfo[] _properties = typeof(Contract).GetMembers(BindingFlags.Public | BindingFlags.Instance);
     private static RangeAttribute _weeklyHoursRange = _properties.First(x => x.Name.Equals("MinWeeklyHours")).GetCustomAttribute<RangeAttribute>();
