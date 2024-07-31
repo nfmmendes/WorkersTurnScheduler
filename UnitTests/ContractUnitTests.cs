@@ -8,9 +8,9 @@ namespace UnitTests;
 public class ContractUnitTests
 {
     private static MemberInfo[] _properties = typeof(Contract).GetMembers(BindingFlags.Public | BindingFlags.Instance);
-    private static RangeAttribute _weeklyHoursRange = _properties.First(x => x.Name.Equals("MinWeeklyHours")).GetCustomAttribute<RangeAttribute>();
-    private static RangeAttribute _weeklyDaysRange = _properties.First(x => x.Name.Equals("MinWeeklyDays")).GetCustomAttribute<RangeAttribute>();
-    private static RangeAttribute _dailyWorkingHoursRange = _properties.First(x => x.Name.Equals("MinDailyHours")).GetCustomAttribute<RangeAttribute>();
+    private static RangeAttribute? _weeklyHoursRange = _properties.First(x => x.Name.Equals("MinWeeklyHours")).GetCustomAttribute<RangeAttribute>();
+    private static RangeAttribute? _weeklyDaysRange = _properties.First(x => x.Name.Equals("MinWeeklyDays")).GetCustomAttribute<RangeAttribute>();
+    private static RangeAttribute? _dailyWorkingHoursRange = _properties.First(x => x.Name.Equals("MinDailyHours")).GetCustomAttribute<RangeAttribute>();
 
     public static IEnumerable<object[]> ValidWeeklyHours {
         get
