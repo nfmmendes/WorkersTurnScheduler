@@ -15,7 +15,8 @@ public class ContractUnitTests
     public static IEnumerable<object[]> ValidWeeklyHours {
         get
         {
-            return Enumerable.Range((int)_weeklyHoursRange.Minimum, (int)_weeklyHoursRange.Maximum + 1)
+            return Enumerable.Range((int)(_weeklyHoursRange?.Minimum ?? 0), 
+                                    (int)(_weeklyHoursRange?.Maximum ?? 24*7) + 1)
                              .Select(x => (new object[] { x }));
         }
     }   
@@ -24,8 +25,8 @@ public class ContractUnitTests
     {
         get
         {
-            var minimum = (int)_weeklyHoursRange.Minimum;
-            var maximum = (int)_weeklyHoursRange.Maximum;
+            var minimum = (int)(_weeklyHoursRange?.Minimum ?? 0);
+            var maximum = (int)(_weeklyHoursRange?.Maximum ?? 24*7);
             return new object[] { minimum - 1, minimum - 3, maximum + 2 }.Select(x => (new object[] { x }));
         }
     }
@@ -34,7 +35,8 @@ public class ContractUnitTests
     {
         get
         {
-            return Enumerable.Range((int)_weeklyDaysRange.Minimum, (int)_weeklyDaysRange.Maximum + 1)
+            return Enumerable.Range((int)(_weeklyDaysRange?.Minimum ?? 0), 
+                                    (int)(_weeklyDaysRange?.Maximum ?? 7)+ 1)
                              .Select(x => (new object[] { x }));
         }
     }
@@ -43,8 +45,8 @@ public class ContractUnitTests
     {
         get
         {
-            int minimum = (int)_weeklyDaysRange.Minimum;
-            int maximum = (int)_weeklyDaysRange.Maximum;
+            int minimum = (int)(_weeklyDaysRange?.Minimum ?? 0);
+            int maximum = (int)(_weeklyDaysRange?.Maximum ?? 7);
 
             return new object[] { minimum - 1, minimum - 3, maximum + 1 }.Select(x => (new object[] { x }));
         }
@@ -54,18 +56,18 @@ public class ContractUnitTests
     {
         get
         {
-            return Enumerable.Range((int)_dailyWorkingHoursRange.Minimum, (int)_dailyWorkingHoursRange.Maximum + 1)
+            return Enumerable.Range((int)(_dailyWorkingHoursRange?.Minimum ?? 0),
+                                    (int)(_dailyWorkingHoursRange?.Maximum ?? 24) + 1)
                              .Select(x => (new object[] { x }));
         }
     }
-
 
     public static IEnumerable<object[]> InvalidDailyWorkingHours
     {
         get
         {
-            var minimum = (int)_dailyWorkingHoursRange.Minimum;
-            var maximum = (int)_dailyWorkingHoursRange.Maximum;
+            var minimum = (int)(_dailyWorkingHoursRange?.Minimum ?? 0);
+            var maximum = (int)(_dailyWorkingHoursRange?.Maximum ?? 0);
             return new object[] { minimum -1, minimum -3, maximum + 1 }.Select(x => (new object[] { x }));
         }
     }
