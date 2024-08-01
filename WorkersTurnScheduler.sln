@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkersTurnScheduler", "WorkersTurnScheduler\WorkersTurnScheduler.csproj", "{1642E58A-3B5E-44FC-A716-931FA9DAFB63}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{89EE4F8F-17CC-4BD7-9A08-998F77C47E5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1642E58A-3B5E-44FC-A716-931FA9DAFB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1642E58A-3B5E-44FC-A716-931FA9DAFB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1642E58A-3B5E-44FC-A716-931FA9DAFB63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89EE4F8F-17CC-4BD7-9A08-998F77C47E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89EE4F8F-17CC-4BD7-9A08-998F77C47E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89EE4F8F-17CC-4BD7-9A08-998F77C47E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89EE4F8F-17CC-4BD7-9A08-998F77C47E5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

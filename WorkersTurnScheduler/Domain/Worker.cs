@@ -52,7 +52,7 @@ namespace WorkersTurnScheduler.Domain
         /// <param name="name"> The worker name. </param>
         /// <param name="surname">The worker surname. </param>
         /// <param name="contract"> The worker contract. </param>
-        public Worker(string name, string surname, Contract? contract)
+        public Worker(string name, string surname, Contract? contract=null)
         {
             Name = name;
             Surname = surname;
@@ -66,7 +66,6 @@ namespace WorkersTurnScheduler.Domain
         public Worker() {
             Name = "";
             Surname = "";
-            Contract = new Contract();
         }
     }
 }
