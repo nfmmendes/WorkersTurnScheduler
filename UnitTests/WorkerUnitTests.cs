@@ -32,6 +32,7 @@ public class WorkerUnitTests
 
         Assert.Equal("Name", worker.Name);
         Assert.Equal("Surname", worker.Surname);
+        Assert.Null(worker.Contract);
         Assert.False(worker.HasContract);
     }
 
@@ -50,5 +51,18 @@ public class WorkerUnitTests
         Assert.Equal(ContractType.Freelance, worker.Contract?.ContractType);
         Assert.Equal(8, worker.Contract?.MaxDailyHours);
         Assert.Equal(6, worker.Contract?.MinDailyHours);
+    }
+
+    [Fact]
+    public void TestHasContract()
+    {
+        Worker worker = new Worker();
+
+        Assert.Null(worker.Contract);
+        Assert.False(worker.HasContract);
+
+        worker.Contract = new Contract();
+
+        Assert.True(worker.HasContract);
     }
 }
