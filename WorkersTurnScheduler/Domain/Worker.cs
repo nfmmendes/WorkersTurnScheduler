@@ -66,7 +66,6 @@ namespace WorkersTurnScheduler.Domain
         public Worker() {
             Name = "";
             Surname = "";
-            Contract = new Contract();
         }
     }
 }
