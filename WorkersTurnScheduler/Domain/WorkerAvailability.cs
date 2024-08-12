@@ -18,17 +18,17 @@ namespace WorkersTurnScheduler.Domain
         /// The worker.
         /// </value>
         [Key]
-        public Worker Worker { get; private set; } 
+        public Worker Worker { get; private set; } = new Worker(); 
 
         /// <summary>
         /// The list of availability slots to the given worker. 
         /// </summary>
-        public List<AvailabilitySlot> AvailabilitySlots { get; private set; }
+        public List<AvailabilitySlot> AvailabilitySlots { get; private set; } = new List<AvailabilitySlot>();
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        private WorkerAvailability() { 
+        public WorkerAvailability() { 
         }
     }
 }
