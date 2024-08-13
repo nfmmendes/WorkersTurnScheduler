@@ -16,6 +16,9 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
         /// </value>
         private IWorkerRepository _repository;
 
+        /// <value>
+        /// Property that is used to control if the worker has a contract or not. 
+        /// </value>
         [BindProperty]
         public bool HasContract { get; set; }
 
@@ -37,12 +40,16 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Worker
         /// <summary>
         /// Page get function.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The page view</returns>
         public IActionResult OnGet()
         {
             return Page();
         }
 
+        /// <summary>
+        /// Page post function. 
+        /// </summary>
+        /// <returns>A redirection to the worker list page.</returns>
         public IActionResult OnPost() {
 
             if (!HasContract)
