@@ -1,4 +1,77 @@
 ﻿@page
 @model WorkersTurnScheduler.Pages.SchedulerArea.Contract.CreateModel
+@using WorkersTurnScheduler.Domain
 @{
 }
+
+<div class="container">
+    <h2>Create contract </h2>
+    <form method="post">
+        <div class="row mt-1 mb-3">
+            <div class="col-5">
+                <label> Contract type: </label>
+                <select class="mt-2" asp-for="Contract.ContractType" class="form-control"
+                        asp-items="Html.GetEnumSelectList<ContractType>()">
+                    <option value=""> -- Select Contract Type -- </option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <h5> Weekly hours contracted: </h5>
+            <div class="col-md-4">
+                <p>
+                    <label class="w-50"> Minimum: </label>
+                    <input class="form-control w-25" type="number" min="0" asp-for="Contract.MinWeeklyHours" />
+                </p>
+                <span asp-validation-for="Contract.MinWeeklyHours" class="text-warning"></span>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <label class="w-50"> Maximum: </label>
+                    <input class="form-control w-25" type="number" min="0" asp-for="Contract.MaxWeeklyHours" />
+                </p>
+                <span asp-validation-for="Contract.MaxWeeklyHours" class="text-warning"></span>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <h5> Weekly days contracted: </h5>
+            <div class="col-md-4">
+                <p>
+                    <label class="w-50"> Minimum: </label>
+                    <input class="form-control  w-25" type="number" min="0" asp-for="Contract.MinWeeklyDays" />
+                </p>
+                <span asp-validation-for="Contract.MinWeeklyDays" class="text-warning"></span>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <label class="w-50"> Maximum: </label>
+                    <input class="form-control w-25" type="number" min="0" asp-for="Contract.MaxWeeklyDays" />
+                </p>
+                <span asp-validation-for="Contract.MaxWeeklyDays" class="text-warning"></span>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <h5> Working day shift duration: </h5>
+            <div class="col-md-4">
+                <p>
+                    <label class="w-50"> Minimum: </label>
+                    <input class="form-control w-25" type="number" min="0" asp-for="Contract.MinDailyHours" />
+                </p>
+                <span asp-validation-for="Contract.MinDailyHours" class="text-warning"></span>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <label class="w-50"> Maximum: </label>
+                    <input class="form-control w-25" type="number" min="0" asp-for="Contract.MaxDailyHours" />
+                </p>
+                <span asp-validation-for="Contract.MaxDailyHours" class="text-warning"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" value="Save"> Save </button>
+                <button class="btn btn-secondary" onclick="confirmCancel()"> Cancel </button>
+            </div>
+        </div>
+    </form>
+</div>
