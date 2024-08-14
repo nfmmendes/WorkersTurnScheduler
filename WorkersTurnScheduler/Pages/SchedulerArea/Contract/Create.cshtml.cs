@@ -22,6 +22,11 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Contract
         [BindProperty]
         public Domain.Contract Contract {  get; set; }
 
+        /// <value>
+        /// The worker id. 
+        /// </value>
+        public Guid? WorkerId { get; set; }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -43,6 +48,8 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Contract
             {
                 return NotFound();
             }
+
+            WorkerId = new Guid(workerIdObject.ToString());
 
             return Page();
         }
