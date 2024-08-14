@@ -37,6 +37,13 @@ namespace WorkersTurnScheduler.Pages.SchedulerArea.Contract
         /// <returns>The page view</returns>
         public IActionResult OnGet()
         {
+            HttpContext.Request.RouteValues.TryGetValue("workerId", out object workerIdObject);
+
+            if (workerIdObject == null)
+            {
+                return NotFound();
+            }
+
             return Page();
         }
     }
